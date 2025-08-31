@@ -4,6 +4,10 @@ using Toybox.System;
 import Toybox.Lang;
 
 class SettingsView extends WatchUi.View {
+    function initialize() {
+        View.initialize();
+    }
+
     function onShow() {}
 
     function onUpdate(dc as Graphics.Dc) {

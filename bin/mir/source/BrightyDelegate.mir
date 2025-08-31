@@ -33,20 +33,20 @@ C__develop_garmin_Brighty_source_BrightyDelegate_mc_7_43_10_4_stop:
     }
     [ @file = "C:\develop\garmin\Brighty\source\BrightyDelegate.mc"; @line = 13; @symbol_functiondef = [onKey,13,13,18]; @symbol_param<0> = [keyEvent,13,19,27]; @symbol_param<0>_type<0> = [WatchUi,13,31,38]; @symbol_param<0>_type<1> = [KeyEvent,13,39,47]; @symbol_return<0> = [Lang,13,52,56]; @symbol_return<1> = [Boolean,13,57,64]; ]
     function onKey(keyEvent as WatchUi.KeyEvent) as Lang.Boolean {
-C__develop_garmin_Brighty_source_BrightyDelegate_mc_13_65_16_4_start:
-[ "C:\develop\garmin\Brighty\source\BrightyDelegate.mc" 15 8 ]
-        symbol [ _view %tmp.2 15 15 20 ];
+C__develop_garmin_Brighty_source_BrightyDelegate_mc_13_65_15_4_start:
+[ "C:\develop\garmin\Brighty\source\BrightyDelegate.mc" 14 8 ]
+        symbol [ _view %tmp.2 14 15 20 ];
         %tmp.2 = getv ? :_view;
-        symbol [ onKey %tmp.3 15 21 26 ];
+        symbol [ onKey %tmp.3 14 21 26 ];
         %tmp.3 = getv function %tmp.2 :onKey;
         %tmp.4 = lgetv %keyEvent;
-        symbol [ keyEvent %tmp.4 15 27 35 ];
-        symbol [ getKey %tmp.5 15 36 42 ];
+        symbol [ keyEvent %tmp.4 14 27 35 ];
+        symbol [ getKey %tmp.5 14 36 42 ];
         %tmp.5 = getv function %tmp.4 :getKey;
         %tmp.6 = invoke %tmp.4 %tmp.5();
         %tmp.7 = invoke %tmp.2 %tmp.3(%tmp.6);
         ret %tmp.7;
-C__develop_garmin_Brighty_source_BrightyDelegate_mc_13_65_16_4_stop:
+C__develop_garmin_Brighty_source_BrightyDelegate_mc_13_65_15_4_stop:
     }
 }
 [ @file = "C:\develop\garmin\Brighty\source\BrightyDelegate.mc"; @line = 1; ]

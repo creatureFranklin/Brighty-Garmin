@@ -12,11 +12,11 @@ using Toybox.Graphics;
 import Toybox.Lang;
 [ @file = "C:\develop\garmin\Brighty\source\BrightyView.mc"; @line = 7; @symbol_usingdef<0> = [Toybox,7,6,12]; @symbol_usingdef<1> = [Math,7,13,17]; ]
 using Toybox.Math;
-[ @file = "C:\develop\garmin\Brighty\source\BrightyView.mc"; @line = 10; @symbol_classdef = [FlashlightView,10,6,20]; @symbol_extends<0> = [WatchUi,10,29,36]; @symbol_extends<1> = [View,10,37,41]; ]
+[ @file = "C:\develop\garmin\Brighty\source\BrightyView.mc"; @line = 9; @symbol_classdef = [FlashlightView,9,6,20]; @symbol_extends<0> = [WatchUi,9,29,36]; @symbol_extends<1> = [View,9,37,41]; ]
 class FlashlightView extends WatchUi.View {
-    [ @file = "C:\develop\garmin\Brighty\source\BrightyView.mc"; @line = 10; ]
+    [ @file = "C:\develop\garmin\Brighty\source\BrightyView.mc"; @line = 9; ]
     <init> {
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 11 8 ]
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 10 8 ]
         %tmp.1 = newa 5;
         %tmp.2 = 0xffffff;
         %tmp.3 = dup %tmp.1;
@@ -27,760 +27,733 @@ class FlashlightView extends WatchUi.View {
         %tmp.8 = 0x999999;
         %tmp.9 = dup %tmp.7;
         %tmp.10 = aputv %tmp.9 2 %tmp.8;
-        symbol [ Graphics %tmp.11 15 8 16 ];
+        symbol [ Graphics %tmp.11 14 8 16 ];
         %tmp.11 = getm $.Toybox.Graphics;
-        symbol [ COLOR_RED %tmp.12 15 17 26 ];
+        symbol [ COLOR_RED %tmp.12 14 17 26 ];
         %tmp.12 = getv %tmp.11 :COLOR_RED;
         %tmp.13 = dup %tmp.10;
         %tmp.14 = aputv %tmp.13 3 %tmp.12;
-        symbol [ Graphics %tmp.15 16 8 16 ];
+        symbol [ Graphics %tmp.15 15 8 16 ];
         %tmp.15 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.16 16 17 28 ];
+        symbol [ COLOR_BLACK %tmp.16 15 17 28 ];
         %tmp.16 = getv %tmp.15 :COLOR_BLACK;
         %tmp.17 = dup %tmp.14;
         %tmp.18 = aputv %tmp.17 4 %tmp.16;
         putv self :_colors %tmp.18;
     }
-    [ @file = "C:\develop\garmin\Brighty\source\BrightyView.mc"; @line = 10; ]
+    [ @file = "C:\develop\garmin\Brighty\source\BrightyView.mc"; @line = 9; ]
     static
     <init> {
     }
-    [ @file = "C:\develop\garmin\Brighty\source\BrightyView.mc"; @line = 11; @position = 8; @symbol_vardef = [_colors,11,8,15]; @symbol_type<0> = [Array,11,19,24]; @symbol_type<1> = [Integer,11,25,32]; ]
+    [ @file = "C:\develop\garmin\Brighty\source\BrightyView.mc"; @line = 10; @position = 8; @symbol_vardef = [_colors,10,8,15]; @symbol_type<0> = [Array,10,19,24]; @symbol_type<1> = [Integer,10,25,32]; ]
     var _colors as Array<Integer>;
-    [ @file = "C:\develop\garmin\Brighty\source\BrightyView.mc"; @line = 18; @position = 8; @symbol_vardef = [_color,18,8,14]; @symbol_type<0> = [Integer,18,18,25]; ]
+    [ @file = "C:\develop\garmin\Brighty\source\BrightyView.mc"; @line = 17; @position = 8; @symbol_vardef = [_color,17,8,14]; @symbol_type<0> = [Integer,17,18,25]; ]
     var _color as Integer;
-    [ @file = "C:\develop\garmin\Brighty\source\BrightyView.mc"; @line = 19; @position = 8; @symbol_vardef = [_index,19,8,14]; @symbol_type<0> = [Integer,19,18,25]; ]
+    [ @file = "C:\develop\garmin\Brighty\source\BrightyView.mc"; @line = 18; @position = 8; @symbol_vardef = [_index,18,8,14]; @symbol_type<0> = [Integer,18,18,25]; ]
     var _index as Integer = 0;
-    [ @file = "C:\develop\garmin\Brighty\source\BrightyView.mc"; @line = 21; @position = 8; @symbol_vardef = [_counter,21,8,16]; @symbol_type<0> = [Integer,21,20,27]; ]
-    var _counter as Integer = 0;
-    [ @file = "C:\develop\garmin\Brighty\source\BrightyView.mc"; @line = 24; @position = 8; @symbol_vardef = [_icoUp,24,8,14]; ]
-    var _icoUp;
-    [ @file = "C:\develop\garmin\Brighty\source\BrightyView.mc"; @line = 25; @position = 8; @symbol_vardef = [_icoDown,25,8,16]; ]
-    var _icoDown;
-    [ @file = "C:\develop\garmin\Brighty\source\BrightyView.mc"; @line = 27; @symbol_functiondef = [initialize,27,13,23]; ]
+    [ @file = "C:\develop\garmin\Brighty\source\BrightyView.mc"; @line = 20; @symbol_functiondef = [initialize,20,13,23]; ]
     function initialize() as Void {
-C__develop_garmin_Brighty_source_BrightyView_mc_27_26_30_4_start:
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 28 8 ]
-        symbol [ View %tmp.2 28 8 12 ];
+C__develop_garmin_Brighty_source_BrightyView_mc_20_26_23_4_start:
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 21 8 ]
+        symbol [ View %tmp.2 21 8 12 ];
         %tmp.2 = getv ? :View;
-        symbol [ initialize %tmp.3 28 13 23 ];
+        symbol [ initialize %tmp.3 21 13 23 ];
         %tmp.3 = getv function %tmp.2 :initialize;
         invoke %tmp.2 %tmp.3();
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 29 8 ]
-        symbol [ _colors %tmp.5 29 17 24 ];
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 22 8 ]
+        symbol [ _colors %tmp.5 22 17 24 ];
         %tmp.5 = getv ? :_colors;
-        symbol [ _index %tmp.7 29 25 31 ];
+        symbol [ _index %tmp.7 22 25 31 ];
         %tmp.7 = getv ? :_index;
         %tmp.8 = agetv %tmp.5 %tmp.7;
-        symbol [ _color ? 29 8 14 ];
+        symbol [ _color ? 22 8 14 ];
         putv self :_color %tmp.8;
-C__develop_garmin_Brighty_source_BrightyView_mc_27_26_30_4_stop:
+C__develop_garmin_Brighty_source_BrightyView_mc_20_26_23_4_stop:
     }
-    [ @file = "C:\develop\garmin\Brighty\source\BrightyView.mc"; @line = 32; @symbol_functiondef = [onShow,32,13,19]; ]
+    [ @file = "C:\develop\garmin\Brighty\source\BrightyView.mc"; @line = 25; @symbol_functiondef = [onShow,25,13,19]; ]
     function onShow() {
     }
-    [ @file = "C:\develop\garmin\Brighty\source\BrightyView.mc"; @line = 34; @symbol_functiondef = [onUpdate,34,13,21]; @symbol_param<0> = [dc,34,22,24]; @symbol_param<0>_type<0> = [Graphics,34,28,36]; @symbol_param<0>_type<1> = [Dc,34,37,39]; ]
+    [ @file = "C:\develop\garmin\Brighty\source\BrightyView.mc"; @line = 27; @symbol_functiondef = [onUpdate,27,13,21]; @symbol_param<0> = [dc,27,22,24]; @symbol_param<0>_type<0> = [Graphics,27,28,36]; @symbol_param<0>_type<1> = [Dc,27,37,39]; ]
     function onUpdate(dc as Graphics.Dc) {
-C__develop_garmin_Brighty_source_BrightyView_mc_34_41_64_4_start:
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 36 8 ]
-        [ "C__develop_garmin_Brighty_source_BrightyView_mc_34_41_64_4_start" "C__develop_garmin_Brighty_source_BrightyView_mc_34_41_64_4_stop" ]
+C__develop_garmin_Brighty_source_BrightyView_mc_27_41_48_4_start:
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 29 8 ]
+        [ "C__develop_garmin_Brighty_source_BrightyView_mc_27_41_48_4_start" "C__develop_garmin_Brighty_source_BrightyView_mc_27_41_48_4_stop" ]
         %bg.1 = local;
-        symbol [ bg %bg.1 36 12 14 ];
-        symbol [ _colors %tmp.2 36 17 24 ];
+        symbol [ bg %bg.1 29 12 14 ];
+        symbol [ _colors %tmp.2 29 17 24 ];
         %tmp.2 = getv ? :_colors;
-        symbol [ _index %tmp.4 36 25 31 ];
+        symbol [ _index %tmp.4 29 25 31 ];
         %tmp.4 = getv ? :_index;
         %tmp.5 = agetv %tmp.2 %tmp.4;
         lputv %bg.1 %tmp.5;
-        symbol [ bg %bg.1 36 12 14 ];
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 37 8 ]
-        [ "C__develop_garmin_Brighty_source_BrightyView_mc_34_41_64_4_start" "C__develop_garmin_Brighty_source_BrightyView_mc_34_41_64_4_stop" ]
+        symbol [ bg %bg.1 29 12 14 ];
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 30 8 ]
+        [ "C__develop_garmin_Brighty_source_BrightyView_mc_27_41_48_4_start" "C__develop_garmin_Brighty_source_BrightyView_mc_27_41_48_4_stop" ]
         %fg.2 = local;
-        symbol [ fg %fg.2 37 12 14 ];
+        symbol [ fg %fg.2 30 12 14 ];
         %tmp.6 = self;
-        symbol [ contrastColor %tmp.7 37 17 30 ];
+        symbol [ contrastColor %tmp.7 30 17 30 ];
         %tmp.7 = getv function %tmp.6 :contrastColor;
         %tmp.8 = lgetv %bg.1;
-        symbol [ bg %tmp.8 37 31 33 ];
+        symbol [ bg %tmp.8 30 31 33 ];
         %tmp.9 = invoke %tmp.6 %tmp.7(%tmp.8);
         lputv %fg.2 %tmp.9;
-        symbol [ fg %fg.2 37 12 14 ];
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 38 8 ]
+        symbol [ fg %fg.2 30 12 14 ];
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 31 8 ]
         %tmp.10 = lgetv %dc;
-        symbol [ dc %tmp.10 38 8 10 ];
-        symbol [ setColor %tmp.11 38 11 19 ];
+        symbol [ dc %tmp.10 31 8 10 ];
+        symbol [ setColor %tmp.11 31 11 19 ];
         %tmp.11 = getv function %tmp.10 :setColor;
-        symbol [ Graphics %tmp.12 38 20 28 ];
+        symbol [ Graphics %tmp.12 31 20 28 ];
         %tmp.12 = getm $.Toybox.Graphics;
-        symbol [ COLOR_WHITE %tmp.13 38 29 40 ];
+        symbol [ COLOR_WHITE %tmp.13 31 29 40 ];
         %tmp.13 = getv %tmp.12 :COLOR_WHITE;
         %tmp.14 = lgetv %bg.1;
-        symbol [ bg %tmp.14 38 42 44 ];
+        symbol [ bg %tmp.14 31 42 44 ];
         invoke %tmp.10 %tmp.11(%tmp.13, %tmp.14);
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 39 8 ]
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 32 8 ]
         %tmp.15 = lgetv %dc;
-        symbol [ dc %tmp.15 39 8 10 ];
-        symbol [ clear %tmp.16 39 11 16 ];
+        symbol [ dc %tmp.15 32 8 10 ];
+        symbol [ clear %tmp.16 32 11 16 ];
         %tmp.16 = getv function %tmp.15 :clear;
         invoke %tmp.15 %tmp.16();
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 42 8 ]
-        [ "C__develop_garmin_Brighty_source_BrightyView_mc_34_41_64_4_start" "C__develop_garmin_Brighty_source_BrightyView_mc_34_41_64_4_stop" ]
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 35 8 ]
+        [ "C__develop_garmin_Brighty_source_BrightyView_mc_27_41_48_4_start" "C__develop_garmin_Brighty_source_BrightyView_mc_27_41_48_4_stop" ]
         %w.3 = local;
-        symbol [ w %w.3 42 12 13 ];
+        symbol [ w %w.3 35 12 13 ];
         %tmp.17 = lgetv %dc;
-        symbol [ dc %tmp.17 42 16 18 ];
-        symbol [ getWidth %tmp.18 42 19 27 ];
+        symbol [ dc %tmp.17 35 16 18 ];
+        symbol [ getWidth %tmp.18 35 19 27 ];
         %tmp.18 = getv function %tmp.17 :getWidth;
         %tmp.19 = invoke %tmp.17 %tmp.18();
         lputv %w.3 %tmp.19;
-        symbol [ w %w.3 42 12 13 ];
-        [ "C__develop_garmin_Brighty_source_BrightyView_mc_34_41_64_4_start" "C__develop_garmin_Brighty_source_BrightyView_mc_34_41_64_4_stop" ]
+        symbol [ w %w.3 35 12 13 ];
+        [ "C__develop_garmin_Brighty_source_BrightyView_mc_27_41_48_4_start" "C__develop_garmin_Brighty_source_BrightyView_mc_27_41_48_4_stop" ]
         %h.4 = local;
-        symbol [ h %h.4 43 12 13 ];
+        symbol [ h %h.4 36 12 13 ];
         %tmp.20 = lgetv %dc;
-        symbol [ dc %tmp.20 43 16 18 ];
-        symbol [ getHeight %tmp.21 43 19 28 ];
+        symbol [ dc %tmp.20 36 16 18 ];
+        symbol [ getHeight %tmp.21 36 19 28 ];
         %tmp.21 = getv function %tmp.20 :getHeight;
         %tmp.22 = invoke %tmp.20 %tmp.21();
         lputv %h.4 %tmp.22;
-        symbol [ h %h.4 43 12 13 ];
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 44 8 ]
-        [ "C__develop_garmin_Brighty_source_BrightyView_mc_34_41_64_4_start" "C__develop_garmin_Brighty_source_BrightyView_mc_34_41_64_4_stop" ]
+        symbol [ h %h.4 36 12 13 ];
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 37 8 ]
+        [ "C__develop_garmin_Brighty_source_BrightyView_mc_27_41_48_4_start" "C__develop_garmin_Brighty_source_BrightyView_mc_27_41_48_4_stop" ]
         %cx.5 = local;
-        symbol [ cx %cx.5 44 12 14 ];
+        symbol [ cx %cx.5 37 12 14 ];
         %tmp.23 = lgetv %w.3;
-        symbol [ w %tmp.23 44 17 18 ];
+        symbol [ w %tmp.23 37 17 18 ];
         %tmp.24 = 2.0;
         %tmp.25 = div %tmp.23 %tmp.24;
         lputv %cx.5 %tmp.25;
-        symbol [ cx %cx.5 44 12 14 ];
-        [ "C__develop_garmin_Brighty_source_BrightyView_mc_34_41_64_4_start" "C__develop_garmin_Brighty_source_BrightyView_mc_34_41_64_4_stop" ]
+        symbol [ cx %cx.5 37 12 14 ];
+        [ "C__develop_garmin_Brighty_source_BrightyView_mc_27_41_48_4_start" "C__develop_garmin_Brighty_source_BrightyView_mc_27_41_48_4_stop" ]
         %cy.6 = local;
-        symbol [ cy %cy.6 45 12 14 ];
+        symbol [ cy %cy.6 38 12 14 ];
         %tmp.26 = lgetv %h.4;
-        symbol [ h %tmp.26 45 17 18 ];
+        symbol [ h %tmp.26 38 17 18 ];
         %tmp.27 = 2.0;
         %tmp.28 = div %tmp.26 %tmp.27;
         lputv %cy.6 %tmp.28;
-        symbol [ cy %cy.6 45 12 14 ];
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 46 8 ]
-        [ "C__develop_garmin_Brighty_source_BrightyView_mc_34_41_64_4_start" "C__develop_garmin_Brighty_source_BrightyView_mc_34_41_64_4_stop" ]
+        symbol [ cy %cy.6 38 12 14 ];
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 39 8 ]
+        [ "C__develop_garmin_Brighty_source_BrightyView_mc_27_41_48_4_start" "C__develop_garmin_Brighty_source_BrightyView_mc_27_41_48_4_stop" ]
         %rOuter.7 = local;
-        symbol [ rOuter %rOuter.7 46 12 18 ];
-C__develop_garmin_Brighty_source_BrightyView_mc_46_22_46_34_begin:
+        symbol [ rOuter %rOuter.7 39 12 18 ];
+C__develop_garmin_Brighty_source_BrightyView_mc_39_22_39_34_begin:
         %tmp.29 = lgetv %w.3;
-        symbol [ w %tmp.29 46 22 23 ];
+        symbol [ w %tmp.29 39 22 23 ];
         %tmp.30 = lgetv %h.4;
-        symbol [ h %tmp.30 46 26 27 ];
+        symbol [ h %tmp.30 39 26 27 ];
         %tmp.31 = lt %tmp.29 %tmp.30;
-        bf %tmp.31 @C__develop_garmin_Brighty_source_BrightyView_mc_46_22_46_34_false;
-C__develop_garmin_Brighty_source_BrightyView_mc_46_22_46_34_true:
+        bf %tmp.31 @C__develop_garmin_Brighty_source_BrightyView_mc_39_22_39_34_false;
+C__develop_garmin_Brighty_source_BrightyView_mc_39_22_39_34_true:
         %tmp.32 = lgetv %w.3;
-        symbol [ w %tmp.32 46 30 31 ];
+        symbol [ w %tmp.32 39 30 31 ];
         push %tmp.32;
-        goto @C__develop_garmin_Brighty_source_BrightyView_mc_46_22_46_34_end;
-C__develop_garmin_Brighty_source_BrightyView_mc_46_22_46_34_false:
+        goto @C__develop_garmin_Brighty_source_BrightyView_mc_39_22_39_34_end;
+C__develop_garmin_Brighty_source_BrightyView_mc_39_22_39_34_false:
         %tmp.33 = lgetv %h.4;
-        symbol [ h %tmp.33 46 34 35 ];
+        symbol [ h %tmp.33 39 34 35 ];
         push %tmp.33;
-C__develop_garmin_Brighty_source_BrightyView_mc_46_22_46_34_end:
-        %tmp.34 = phi [%tmp.31 @C__develop_garmin_Brighty_source_BrightyView_mc_46_22_46_34_begin] [%tmp.32 @C__develop_garmin_Brighty_source_BrightyView_mc_46_22_46_34_true] [%tmp.33 @C__develop_garmin_Brighty_source_BrightyView_mc_46_22_46_34_false] [%tmp.34 @C__develop_garmin_Brighty_source_BrightyView_mc_46_22_46_34_end];
+C__develop_garmin_Brighty_source_BrightyView_mc_39_22_39_34_end:
+        %tmp.34 = phi [%tmp.31 @C__develop_garmin_Brighty_source_BrightyView_mc_39_22_39_34_begin] [%tmp.32 @C__develop_garmin_Brighty_source_BrightyView_mc_39_22_39_34_true] [%tmp.33 @C__develop_garmin_Brighty_source_BrightyView_mc_39_22_39_34_false] [%tmp.34 @C__develop_garmin_Brighty_source_BrightyView_mc_39_22_39_34_end];
         %tmp.35 = 2.0;
         %tmp.36 = div %tmp.34 %tmp.35;
         %tmp.37 = 8.0;
         %tmp.38 = sub %tmp.36 %tmp.37;
         lputv %rOuter.7 %tmp.38;
-        symbol [ rOuter %rOuter.7 46 12 18 ];
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 49 8 ]
+        symbol [ rOuter %rOuter.7 39 12 18 ];
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 42 8 ]
         %tmp.39 = self;
-        symbol [ drawSoftKeyStrip %tmp.40 49 8 24 ];
+        symbol [ drawSoftKeyStrip %tmp.40 42 8 24 ];
         %tmp.40 = getv function %tmp.39 :drawSoftKeyStrip;
         %tmp.41 = lgetv %dc;
-        symbol [ dc %tmp.41 49 25 27 ];
+        symbol [ dc %tmp.41 42 25 27 ];
         %tmp.42 = lgetv %cx.5;
-        symbol [ cx %tmp.42 49 29 31 ];
+        symbol [ cx %tmp.42 42 29 31 ];
         %tmp.43 = lgetv %cy.6;
-        symbol [ cy %tmp.43 49 33 35 ];
+        symbol [ cy %tmp.43 42 33 35 ];
         %tmp.44 = lgetv %rOuter.7;
-        symbol [ rOuter %tmp.44 49 37 43 ];
+        symbol [ rOuter %tmp.44 42 37 43 ];
         %tmp.45 = 30;
         %tmp.46 = 15;
         %tmp.47 = 6;
         %tmp.48 = lgetv %bg.1;
-        symbol [ bg %tmp.48 49 56 58 ];
+        symbol [ bg %tmp.48 42 56 58 ];
         %tmp.49 = lgetv %fg.2;
-        symbol [ fg %tmp.49 49 60 62 ];
+        symbol [ fg %tmp.49 42 60 62 ];
         invoke %tmp.39 %tmp.40(%tmp.41, %tmp.42, %tmp.43, %tmp.44, %tmp.45, %tmp.46, %tmp.47, %tmp.48, %tmp.49);
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 51 8 ]
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 44 8 ]
         %tmp.50 = self;
-        symbol [ drawSoftKeyStrip %tmp.51 51 8 24 ];
+        symbol [ drawSoftKeyStrip %tmp.51 44 8 24 ];
         %tmp.51 = getv function %tmp.50 :drawSoftKeyStrip;
         %tmp.52 = lgetv %dc;
-        symbol [ dc %tmp.52 51 25 27 ];
+        symbol [ dc %tmp.52 44 25 27 ];
         %tmp.53 = lgetv %cx.5;
-        symbol [ cx %tmp.53 51 29 31 ];
+        symbol [ cx %tmp.53 44 29 31 ];
         %tmp.54 = lgetv %cy.6;
-        symbol [ cy %tmp.54 51 33 35 ];
+        symbol [ cy %tmp.54 44 33 35 ];
         %tmp.55 = lgetv %rOuter.7;
-        symbol [ rOuter %tmp.55 51 37 43 ];
+        symbol [ rOuter %tmp.55 44 37 43 ];
         %tmp.56 = 180;
         %tmp.57 = 15;
         %tmp.58 = 6;
         %tmp.59 = lgetv %bg.1;
-        symbol [ bg %tmp.59 51 57 59 ];
+        symbol [ bg %tmp.59 44 57 59 ];
         %tmp.60 = lgetv %fg.2;
-        symbol [ fg %tmp.60 51 61 63 ];
+        symbol [ fg %tmp.60 44 61 63 ];
         invoke %tmp.50 %tmp.51(%tmp.52, %tmp.53, %tmp.54, %tmp.55, %tmp.56, %tmp.57, %tmp.58, %tmp.59, %tmp.60);
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 52 8 ]
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 45 8 ]
         %tmp.61 = self;
-        symbol [ drawLabel %tmp.62 52 8 17 ];
+        symbol [ drawLabel %tmp.62 45 8 17 ];
         %tmp.62 = getv function %tmp.61 :drawLabel;
         %tmp.63 = lgetv %dc;
-        symbol [ dc %tmp.63 52 18 20 ];
+        symbol [ dc %tmp.63 45 18 20 ];
         %tmp.64 = lgetv %cx.5;
-        symbol [ cx %tmp.64 52 22 24 ];
+        symbol [ cx %tmp.64 45 22 24 ];
         %tmp.65 = lgetv %cy.6;
-        symbol [ cy %tmp.65 52 26 28 ];
+        symbol [ cy %tmp.65 45 26 28 ];
         %tmp.66 = 180;
         %tmp.67 = lgetv %rOuter.7;
-        symbol [ rOuter %tmp.67 52 35 41 ];
+        symbol [ rOuter %tmp.67 45 35 41 ];
         %tmp.68 = "+";
         %tmp.69 = lgetv %fg.2;
-        symbol [ fg %tmp.69 52 48 50 ];
+        symbol [ fg %tmp.69 45 48 50 ];
         %tmp.70 = lgetv %bg.1;
-        symbol [ bg %tmp.70 52 52 54 ];
-        symbol [ Graphics %tmp.71 52 56 64 ];
+        symbol [ bg %tmp.70 45 52 54 ];
+        symbol [ Graphics %tmp.71 45 56 64 ];
         %tmp.71 = getm $.Toybox.Graphics;
-        symbol [ FONT_TINY %tmp.72 52 65 74 ];
+        symbol [ FONT_TINY %tmp.72 45 65 74 ];
         %tmp.72 = getv %tmp.71 :FONT_TINY;
         %tmp.73 = 20;
         invoke %tmp.61 %tmp.62(%tmp.63, %tmp.64, %tmp.65, %tmp.66, %tmp.67, %tmp.68, %tmp.69, %tmp.70, %tmp.72, %tmp.73);
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 53 8 ]
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 46 8 ]
         %tmp.74 = self;
-        symbol [ drawSoftKeyStrip %tmp.75 53 8 24 ];
+        symbol [ drawSoftKeyStrip %tmp.75 46 8 24 ];
         %tmp.75 = getv function %tmp.74 :drawSoftKeyStrip;
         %tmp.76 = lgetv %dc;
-        symbol [ dc %tmp.76 53 25 27 ];
+        symbol [ dc %tmp.76 46 25 27 ];
         %tmp.77 = lgetv %cx.5;
-        symbol [ cx %tmp.77 53 29 31 ];
+        symbol [ cx %tmp.77 46 29 31 ];
         %tmp.78 = lgetv %cy.6;
-        symbol [ cy %tmp.78 53 33 35 ];
+        symbol [ cy %tmp.78 46 33 35 ];
         %tmp.79 = lgetv %rOuter.7;
-        symbol [ rOuter %tmp.79 53 37 43 ];
+        symbol [ rOuter %tmp.79 46 37 43 ];
         %tmp.80 = 210;
         %tmp.81 = 15;
         %tmp.82 = 6;
         %tmp.83 = lgetv %bg.1;
-        symbol [ bg %tmp.83 53 57 59 ];
+        symbol [ bg %tmp.83 46 57 59 ];
         %tmp.84 = lgetv %fg.2;
-        symbol [ fg %tmp.84 53 61 63 ];
+        symbol [ fg %tmp.84 46 61 63 ];
         invoke %tmp.74 %tmp.75(%tmp.76, %tmp.77, %tmp.78, %tmp.79, %tmp.80, %tmp.81, %tmp.82, %tmp.83, %tmp.84);
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 54 8 ]
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 47 8 ]
         %tmp.85 = self;
-        symbol [ drawLabel %tmp.86 54 8 17 ];
+        symbol [ drawLabel %tmp.86 47 8 17 ];
         %tmp.86 = getv function %tmp.85 :drawLabel;
         %tmp.87 = lgetv %dc;
-        symbol [ dc %tmp.87 54 18 20 ];
+        symbol [ dc %tmp.87 47 18 20 ];
         %tmp.88 = lgetv %cx.5;
-        symbol [ cx %tmp.88 54 22 24 ];
+        symbol [ cx %tmp.88 47 22 24 ];
         %tmp.89 = lgetv %cy.6;
-        symbol [ cy %tmp.89 54 26 28 ];
+        symbol [ cy %tmp.89 47 26 28 ];
         %tmp.90 = 210;
         %tmp.91 = lgetv %rOuter.7;
-        symbol [ rOuter %tmp.91 54 35 41 ];
+        symbol [ rOuter %tmp.91 47 35 41 ];
         %tmp.92 = "-";
         %tmp.93 = lgetv %fg.2;
-        symbol [ fg %tmp.93 54 48 50 ];
+        symbol [ fg %tmp.93 47 48 50 ];
         %tmp.94 = lgetv %bg.1;
-        symbol [ bg %tmp.94 54 52 54 ];
-        symbol [ Graphics %tmp.95 54 56 64 ];
+        symbol [ bg %tmp.94 47 52 54 ];
+        symbol [ Graphics %tmp.95 47 56 64 ];
         %tmp.95 = getm $.Toybox.Graphics;
-        symbol [ FONT_LARGE %tmp.96 54 65 75 ];
+        symbol [ FONT_LARGE %tmp.96 47 65 75 ];
         %tmp.96 = getv %tmp.95 :FONT_LARGE;
         %tmp.97 = 20;
         invoke %tmp.85 %tmp.86(%tmp.87, %tmp.88, %tmp.89, %tmp.90, %tmp.91, %tmp.92, %tmp.93, %tmp.94, %tmp.96, %tmp.97);
-C__develop_garmin_Brighty_source_BrightyView_mc_34_41_64_4_stop:
+C__develop_garmin_Brighty_source_BrightyView_mc_27_41_48_4_stop:
     }
-    [ @file = "C:\develop\garmin\Brighty\source\BrightyView.mc"; @line = 66; @symbol_functiondef = [onKey,66,13,18]; @symbol_param<0> = [key,66,19,22]; @symbol_param<0>_type<0> = [WatchUi,66,26,33]; @symbol_param<0>_type<1> = [Key,66,34,37]; @symbol_return<0> = [Boolean,66,42,49]; ]
+    [ @file = "C:\develop\garmin\Brighty\source\BrightyView.mc"; @line = 50; @symbol_functiondef = [onKey,50,13,18]; @symbol_param<0> = [key,50,19,22]; @symbol_param<0>_type<0> = [WatchUi,50,26,33]; @symbol_param<0>_type<1> = [Key,50,34,37]; @symbol_return<0> = [Boolean,50,42,49]; ]
     function onKey(key as WatchUi.Key) as Boolean {
-C__develop_garmin_Brighty_source_BrightyView_mc_66_50_84_4_start:
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 67 8 ]
-C__develop_garmin_Brighty_source_BrightyView_mc_67_8_71_8_if_stmt:
+C__develop_garmin_Brighty_source_BrightyView_mc_50_50_65_4_start:
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 51 8 ]
+C__develop_garmin_Brighty_source_BrightyView_mc_51_8_54_8_if_stmt:
         %tmp.1 = lgetv %key;
-        symbol [ key %tmp.1 67 12 15 ];
-        symbol [ WatchUi %tmp.2 67 19 26 ];
+        symbol [ key %tmp.1 51 12 15 ];
+        symbol [ WatchUi %tmp.2 51 19 26 ];
         %tmp.2 = getm $.Toybox.WatchUi;
-        symbol [ KEY_ENTER %tmp.3 67 27 36 ];
+        symbol [ KEY_ENTER %tmp.3 51 27 36 ];
         %tmp.3 = getv %tmp.2 :KEY_ENTER;
         %tmp.4 = eq %tmp.1 %tmp.3;
-        bf %tmp.4 @C__develop_garmin_Brighty_source_BrightyView_mc_67_8_71_8_if_end;
-C__develop_garmin_Brighty_source_BrightyView_mc_67_8_71_8_if_true:
-C__develop_garmin_Brighty_source_BrightyView_mc_67_38_71_8_start:
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 68 12 ]
-        symbol [ System %tmp.5 68 12 18 ];
-        %tmp.5 = getm $.Toybox.System;
-        symbol [ println %tmp.6 68 19 26 ];
-        %tmp.6 = getv function %tmp.5 :println;
-        %tmp.7 = "ENTER pressed";
-        invoke %tmp.5 %tmp.6(%tmp.7);
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 69 12 ]
-        %tmp.8 = self;
-        symbol [ openSettings %tmp.9 69 12 24 ];
-        %tmp.9 = getv function %tmp.8 :openSettings;
-        invoke %tmp.8 %tmp.9();
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 70 12 ]
-        %tmp.10 = true;
-        ret %tmp.10;
-C__develop_garmin_Brighty_source_BrightyView_mc_67_38_71_8_stop:
-        goto @C__develop_garmin_Brighty_source_BrightyView_mc_67_8_71_8_if_end;
-C__develop_garmin_Brighty_source_BrightyView_mc_67_8_71_8_if_end:
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 72 8 ]
-C__develop_garmin_Brighty_source_BrightyView_mc_72_8_76_8_if_stmt:
-        %tmp.11 = lgetv %key;
-        symbol [ key %tmp.11 72 12 15 ];
-        symbol [ WatchUi %tmp.12 72 19 26 ];
-        %tmp.12 = getm $.Toybox.WatchUi;
-        symbol [ KEY_UP %tmp.13 72 27 33 ];
-        %tmp.13 = getv %tmp.12 :KEY_UP;
-        %tmp.14 = eq %tmp.11 %tmp.13;
-        bf %tmp.14 @C__develop_garmin_Brighty_source_BrightyView_mc_72_8_76_8_if_end;
-C__develop_garmin_Brighty_source_BrightyView_mc_72_8_76_8_if_true:
-C__develop_garmin_Brighty_source_BrightyView_mc_72_35_76_8_start:
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 73 12 ]
-        symbol [ System %tmp.15 73 12 18 ];
-        %tmp.15 = getm $.Toybox.System;
-        symbol [ println %tmp.16 73 19 26 ];
-        %tmp.16 = getv function %tmp.15 :println;
-        %tmp.17 = "UP pressed";
-        invoke %tmp.15 %tmp.16(%tmp.17);
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 74 12 ]
-        %tmp.18 = self;
-        symbol [ nextColor %tmp.19 74 12 21 ];
-        %tmp.19 = getv function %tmp.18 :nextColor;
-        invoke %tmp.18 %tmp.19();
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 75 12 ]
-        %tmp.20 = true;
-        ret %tmp.20;
-C__develop_garmin_Brighty_source_BrightyView_mc_72_35_76_8_stop:
-        goto @C__develop_garmin_Brighty_source_BrightyView_mc_72_8_76_8_if_end;
-C__develop_garmin_Brighty_source_BrightyView_mc_72_8_76_8_if_end:
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 77 8 ]
-C__develop_garmin_Brighty_source_BrightyView_mc_77_8_81_8_if_stmt:
-        %tmp.21 = lgetv %key;
-        symbol [ key %tmp.21 77 12 15 ];
-        symbol [ WatchUi %tmp.22 77 19 26 ];
-        %tmp.22 = getm $.Toybox.WatchUi;
-        symbol [ KEY_DOWN %tmp.23 77 27 35 ];
-        %tmp.23 = getv %tmp.22 :KEY_DOWN;
-        %tmp.24 = eq %tmp.21 %tmp.23;
-        bf %tmp.24 @C__develop_garmin_Brighty_source_BrightyView_mc_77_8_81_8_if_end;
-C__develop_garmin_Brighty_source_BrightyView_mc_77_8_81_8_if_true:
-C__develop_garmin_Brighty_source_BrightyView_mc_77_37_81_8_start:
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 78 12 ]
-        symbol [ System %tmp.25 78 12 18 ];
-        %tmp.25 = getm $.Toybox.System;
-        symbol [ println %tmp.26 78 19 26 ];
-        %tmp.26 = getv function %tmp.25 :println;
-        %tmp.27 = "DOWN pressed";
-        invoke %tmp.25 %tmp.26(%tmp.27);
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 79 12 ]
-        %tmp.28 = self;
-        symbol [ prevColor %tmp.29 79 12 21 ];
-        %tmp.29 = getv function %tmp.28 :prevColor;
-        invoke %tmp.28 %tmp.29();
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 80 12 ]
-        %tmp.30 = true;
-        ret %tmp.30;
-C__develop_garmin_Brighty_source_BrightyView_mc_77_37_81_8_stop:
-        goto @C__develop_garmin_Brighty_source_BrightyView_mc_77_8_81_8_if_end;
-C__develop_garmin_Brighty_source_BrightyView_mc_77_8_81_8_if_end:
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 83 8 ]
-        %tmp.31 = false;
-        ret %tmp.31;
-C__develop_garmin_Brighty_source_BrightyView_mc_66_50_84_4_stop:
+        bf %tmp.4 @C__develop_garmin_Brighty_source_BrightyView_mc_51_8_54_8_if_end;
+C__develop_garmin_Brighty_source_BrightyView_mc_51_8_54_8_if_true:
+C__develop_garmin_Brighty_source_BrightyView_mc_51_38_54_8_start:
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 52 12 ]
+        %tmp.5 = self;
+        symbol [ openSettings %tmp.6 52 12 24 ];
+        %tmp.6 = getv function %tmp.5 :openSettings;
+        invoke %tmp.5 %tmp.6();
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 53 12 ]
+        %tmp.7 = true;
+        ret %tmp.7;
+C__develop_garmin_Brighty_source_BrightyView_mc_51_38_54_8_stop:
+        goto @C__develop_garmin_Brighty_source_BrightyView_mc_51_8_54_8_if_end;
+C__develop_garmin_Brighty_source_BrightyView_mc_51_8_54_8_if_end:
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 55 8 ]
+C__develop_garmin_Brighty_source_BrightyView_mc_55_8_58_8_if_stmt:
+        %tmp.8 = lgetv %key;
+        symbol [ key %tmp.8 55 12 15 ];
+        symbol [ WatchUi %tmp.9 55 19 26 ];
+        %tmp.9 = getm $.Toybox.WatchUi;
+        symbol [ KEY_UP %tmp.10 55 27 33 ];
+        %tmp.10 = getv %tmp.9 :KEY_UP;
+        %tmp.11 = eq %tmp.8 %tmp.10;
+        bf %tmp.11 @C__develop_garmin_Brighty_source_BrightyView_mc_55_8_58_8_if_end;
+C__develop_garmin_Brighty_source_BrightyView_mc_55_8_58_8_if_true:
+C__develop_garmin_Brighty_source_BrightyView_mc_55_35_58_8_start:
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 56 12 ]
+        %tmp.12 = self;
+        symbol [ nextColor %tmp.13 56 12 21 ];
+        %tmp.13 = getv function %tmp.12 :nextColor;
+        invoke %tmp.12 %tmp.13();
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 57 12 ]
+        %tmp.14 = true;
+        ret %tmp.14;
+C__develop_garmin_Brighty_source_BrightyView_mc_55_35_58_8_stop:
+        goto @C__develop_garmin_Brighty_source_BrightyView_mc_55_8_58_8_if_end;
+C__develop_garmin_Brighty_source_BrightyView_mc_55_8_58_8_if_end:
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 59 8 ]
+C__develop_garmin_Brighty_source_BrightyView_mc_59_8_62_8_if_stmt:
+        %tmp.15 = lgetv %key;
+        symbol [ key %tmp.15 59 12 15 ];
+        symbol [ WatchUi %tmp.16 59 19 26 ];
+        %tmp.16 = getm $.Toybox.WatchUi;
+        symbol [ KEY_DOWN %tmp.17 59 27 35 ];
+        %tmp.17 = getv %tmp.16 :KEY_DOWN;
+        %tmp.18 = eq %tmp.15 %tmp.17;
+        bf %tmp.18 @C__develop_garmin_Brighty_source_BrightyView_mc_59_8_62_8_if_end;
+C__develop_garmin_Brighty_source_BrightyView_mc_59_8_62_8_if_true:
+C__develop_garmin_Brighty_source_BrightyView_mc_59_37_62_8_start:
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 60 12 ]
+        %tmp.19 = self;
+        symbol [ prevColor %tmp.20 60 12 21 ];
+        %tmp.20 = getv function %tmp.19 :prevColor;
+        invoke %tmp.19 %tmp.20();
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 61 12 ]
+        %tmp.21 = true;
+        ret %tmp.21;
+C__develop_garmin_Brighty_source_BrightyView_mc_59_37_62_8_stop:
+        goto @C__develop_garmin_Brighty_source_BrightyView_mc_59_8_62_8_if_end;
+C__develop_garmin_Brighty_source_BrightyView_mc_59_8_62_8_if_end:
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 64 8 ]
+        %tmp.22 = false;
+        ret %tmp.22;
+C__develop_garmin_Brighty_source_BrightyView_mc_50_50_65_4_stop:
     }
-    [ @file = "C:\develop\garmin\Brighty\source\BrightyView.mc"; @line = 93; @symbol_functiondef = [onHide,93,13,19]; ]
+    [ @file = "C:\develop\garmin\Brighty\source\BrightyView.mc"; @line = 74; @symbol_functiondef = [onHide,74,13,19]; ]
     function onHide() {
     }
-    [ @file = "C:\develop\garmin\Brighty\source\BrightyView.mc"; @line = 96; @symbol_functiondef = [nextColor,96,13,22]; ]
+    [ @file = "C:\develop\garmin\Brighty\source\BrightyView.mc"; @line = 76; @symbol_functiondef = [nextColor,76,13,22]; ]
     function nextColor() {
-C__develop_garmin_Brighty_source_BrightyView_mc_96_25_99_4_start:
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 97 8 ]
-        symbol [ _index %tmp.2 97 18 24 ];
+C__develop_garmin_Brighty_source_BrightyView_mc_76_25_79_4_start:
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 77 8 ]
+        symbol [ _index %tmp.2 77 18 24 ];
         %tmp.2 = getv ? :_index;
         %tmp.3 = 1;
         %tmp.4 = add %tmp.2 %tmp.3;
-        symbol [ _colors %tmp.6 97 32 39 ];
+        symbol [ _colors %tmp.6 77 32 39 ];
         %tmp.6 = getv ? :_colors;
-        symbol [ size %tmp.7 97 40 44 ];
+        symbol [ size %tmp.7 77 40 44 ];
         %tmp.7 = getv function %tmp.6 :size;
         %tmp.8 = invoke %tmp.6 %tmp.7();
         %tmp.9 = mod %tmp.4 %tmp.8;
-        symbol [ _index ? 97 8 14 ];
+        symbol [ _index ? 77 8 14 ];
         putv self :_index %tmp.9;
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 98 8 ]
-        symbol [ WatchUi %tmp.10 98 8 15 ];
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 78 8 ]
+        symbol [ WatchUi %tmp.10 78 8 15 ];
         %tmp.10 = getm $.Toybox.WatchUi;
-        symbol [ requestUpdate %tmp.11 98 16 29 ];
+        symbol [ requestUpdate %tmp.11 78 16 29 ];
         %tmp.11 = getv function %tmp.10 :requestUpdate;
         invoke %tmp.10 %tmp.11();
-C__develop_garmin_Brighty_source_BrightyView_mc_96_25_99_4_stop:
+C__develop_garmin_Brighty_source_BrightyView_mc_76_25_79_4_stop:
     }
-    [ @file = "C:\develop\garmin\Brighty\source\BrightyView.mc"; @line = 101; @symbol_functiondef = [prevColor,101,13,22]; ]
+    [ @file = "C:\develop\garmin\Brighty\source\BrightyView.mc"; @line = 81; @symbol_functiondef = [prevColor,81,13,22]; ]
     function prevColor() {
-C__develop_garmin_Brighty_source_BrightyView_mc_101_25_104_4_start:
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 102 8 ]
-        symbol [ _index %tmp.2 102 18 24 ];
+C__develop_garmin_Brighty_source_BrightyView_mc_81_25_84_4_start:
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 82 8 ]
+        symbol [ _index %tmp.2 82 18 24 ];
         %tmp.2 = getv ? :_index;
         %tmp.3 = 1;
         %tmp.4 = sub %tmp.2 %tmp.3;
-        symbol [ _colors %tmp.6 102 31 38 ];
+        symbol [ _colors %tmp.6 82 31 38 ];
         %tmp.6 = getv ? :_colors;
-        symbol [ size %tmp.7 102 39 43 ];
+        symbol [ size %tmp.7 82 39 43 ];
         %tmp.7 = getv function %tmp.6 :size;
         %tmp.8 = invoke %tmp.6 %tmp.7();
         %tmp.9 = add %tmp.4 %tmp.8;
-        symbol [ _colors %tmp.11 102 49 56 ];
+        symbol [ _colors %tmp.11 82 49 56 ];
         %tmp.11 = getv ? :_colors;
-        symbol [ size %tmp.12 102 57 61 ];
+        symbol [ size %tmp.12 82 57 61 ];
         %tmp.12 = getv function %tmp.11 :size;
         %tmp.13 = invoke %tmp.11 %tmp.12();
         %tmp.14 = mod %tmp.9 %tmp.13;
-        symbol [ _index ? 102 8 14 ];
+        symbol [ _index ? 82 8 14 ];
         putv self :_index %tmp.14;
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 103 8 ]
-        symbol [ WatchUi %tmp.15 103 8 15 ];
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 83 8 ]
+        symbol [ WatchUi %tmp.15 83 8 15 ];
         %tmp.15 = getm $.Toybox.WatchUi;
-        symbol [ requestUpdate %tmp.16 103 16 29 ];
+        symbol [ requestUpdate %tmp.16 83 16 29 ];
         %tmp.16 = getv function %tmp.15 :requestUpdate;
         invoke %tmp.15 %tmp.16();
-C__develop_garmin_Brighty_source_BrightyView_mc_101_25_104_4_stop:
+C__develop_garmin_Brighty_source_BrightyView_mc_81_25_84_4_stop:
     }
-    [ @file = "C:\develop\garmin\Brighty\source\BrightyView.mc"; @line = 107; @symbol_functiondef = [openSettings,107,13,25]; ]
+    [ @file = "C:\develop\garmin\Brighty\source\BrightyView.mc"; @line = 89; @symbol_functiondef = [openSettings,89,13,25]; ]
     function openSettings() {
-C__develop_garmin_Brighty_source_BrightyView_mc_107_28_109_4_start:
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 108 8 ]
-        symbol [ WatchUi %tmp.1 108 8 15 ];
+C__develop_garmin_Brighty_source_BrightyView_mc_89_28_91_4_start:
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 90 8 ]
+        symbol [ WatchUi %tmp.1 90 8 15 ];
         %tmp.1 = getm $.Toybox.WatchUi;
-        symbol [ pushView %tmp.2 108 16 24 ];
+        symbol [ pushView %tmp.2 90 16 24 ];
         %tmp.2 = getv function %tmp.1 :pushView;
-        symbol [ SettingsView %tmp.6 108 29 41 ];
+        symbol [ SettingsView %tmp.6 90 29 41 ];
         %tmp.6 = getv ? :SettingsView;
         %tmp.3 = newc %tmp.6 ();
         %tmp.7 = null;
-        symbol [ WatchUi %tmp.8 108 51 58 ];
+        symbol [ WatchUi %tmp.8 90 51 58 ];
         %tmp.8 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_IMMEDIATE %tmp.9 108 59 74 ];
+        symbol [ SLIDE_IMMEDIATE %tmp.9 90 59 74 ];
         %tmp.9 = getv %tmp.8 :SLIDE_IMMEDIATE;
         invoke %tmp.1 %tmp.2(%tmp.3, %tmp.7, %tmp.9);
-C__develop_garmin_Brighty_source_BrightyView_mc_107_28_109_4_stop:
+C__develop_garmin_Brighty_source_BrightyView_mc_89_28_91_4_stop:
     }
-    [ @file = "C:\develop\garmin\Brighty\source\BrightyView.mc"; @line = 116; @symbol_functiondef = [drawSoftKeyStrip,116,13,29]; @symbol_param<0> = [dc,117,8,10]; @symbol_param<0>_type<0> = [Graphics,117,14,22]; @symbol_param<0>_type<1> = [Dc,117,23,25]; @symbol_param<1> = [cx,118,8,10]; @symbol_param<2> = [cy,119,8,10]; @symbol_param<3> = [r,120,8,9]; @symbol_param<3>_type<0> = [Lang,120,13,17]; @symbol_param<3>_type<1> = [Numeric,120,18,25]; @symbol_param<4> = [angleDeg,121,8,16]; @symbol_param<4>_type<0> = [Lang,121,20,24]; @symbol_param<4>_type<1> = [Numeric,121,25,32]; @symbol_param<5> = [arcLenDeg,122,8,17]; @symbol_param<5>_type<0> = [Lang,122,21,25]; @symbol_param<5>_type<1> = [Numeric,122,26,33]; @symbol_param<6> = [ringWidth,123,8,17]; @symbol_param<6>_type<0> = [Lang,123,21,25]; @symbol_param<6>_type<1> = [Numeric,123,26,33]; @symbol_param<7> = [bgColor,124,8,15]; @symbol_param<7>_type<0> = [Lang,124,19,23]; @symbol_param<7>_type<1> = [Numeric,124,24,31]; @symbol_param<8> = [segColor,125,8,16]; @symbol_param<8>_type<0> = [Lang,125,20,24]; @symbol_param<8>_type<1> = [Numeric,125,25,32]; ]
+    [ @file = "C:\develop\garmin\Brighty\source\BrightyView.mc"; @line = 97; @symbol_functiondef = [drawSoftKeyStrip,97,13,29]; @symbol_param<0> = [dc,98,8,10]; @symbol_param<0>_type<0> = [Graphics,98,14,22]; @symbol_param<0>_type<1> = [Dc,98,23,25]; @symbol_param<1> = [cx,99,8,10]; @symbol_param<2> = [cy,100,8,10]; @symbol_param<3> = [r,101,8,9]; @symbol_param<3>_type<0> = [Lang,101,13,17]; @symbol_param<3>_type<1> = [Numeric,101,18,25]; @symbol_param<4> = [angleDeg,102,8,16]; @symbol_param<4>_type<0> = [Lang,102,20,24]; @symbol_param<4>_type<1> = [Numeric,102,25,32]; @symbol_param<5> = [arcLenDeg,103,8,17]; @symbol_param<5>_type<0> = [Lang,103,21,25]; @symbol_param<5>_type<1> = [Numeric,103,26,33]; @symbol_param<6> = [ringWidth,104,8,17]; @symbol_param<6>_type<0> = [Lang,104,21,25]; @symbol_param<6>_type<1> = [Numeric,104,26,33]; @symbol_param<7> = [bgColor,105,8,15]; @symbol_param<7>_type<0> = [Lang,105,19,23]; @symbol_param<7>_type<1> = [Numeric,105,24,31]; @symbol_param<8> = [segColor,106,8,16]; @symbol_param<8>_type<0> = [Lang,106,20,24]; @symbol_param<8>_type<1> = [Numeric,106,25,32]; ]
     function drawSoftKeyStrip(dc as Graphics.Dc, cx, cy, r as Lang.Numeric, angleDeg as Lang.Numeric, arcLenDeg as Lang.Numeric, ringWidth as Lang.Numeric, bgColor as Lang.Numeric, segColor as Lang.Numeric) as Void {
-C__develop_garmin_Brighty_source_BrightyView_mc_126_14_134_4_start:
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 127 8 ]
-        [ "C__develop_garmin_Brighty_source_BrightyView_mc_126_14_134_4_start" "C__develop_garmin_Brighty_source_BrightyView_mc_126_14_134_4_stop" ]
+C__develop_garmin_Brighty_source_BrightyView_mc_107_14_114_4_start:
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 108 8 ]
+        [ "C__develop_garmin_Brighty_source_BrightyView_mc_107_14_114_4_start" "C__develop_garmin_Brighty_source_BrightyView_mc_107_14_114_4_stop" ]
         %startDeg.1 = local;
-        symbol [ startDeg %startDeg.1 127 12 20 ];
+        symbol [ startDeg %startDeg.1 108 12 20 ];
         %tmp.1 = lgetv %angleDeg;
-        symbol [ angleDeg %tmp.1 127 23 31 ];
+        symbol [ angleDeg %tmp.1 108 23 31 ];
         %tmp.2 = lgetv %arcLenDeg;
-        symbol [ arcLenDeg %tmp.2 127 34 43 ];
+        symbol [ arcLenDeg %tmp.2 108 34 43 ];
         %tmp.3 = 2.0;
         %tmp.4 = div %tmp.2 %tmp.3;
         %tmp.5 = sub %tmp.1 %tmp.4;
         lputv %startDeg.1 %tmp.5;
-        symbol [ startDeg %startDeg.1 127 12 20 ];
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 128 8 ]
-        [ "C__develop_garmin_Brighty_source_BrightyView_mc_126_14_134_4_start" "C__develop_garmin_Brighty_source_BrightyView_mc_126_14_134_4_stop" ]
+        symbol [ startDeg %startDeg.1 108 12 20 ];
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 109 8 ]
+        [ "C__develop_garmin_Brighty_source_BrightyView_mc_107_14_114_4_start" "C__develop_garmin_Brighty_source_BrightyView_mc_107_14_114_4_stop" ]
         %endDeg.2 = local;
-        symbol [ endDeg %endDeg.2 128 12 18 ];
+        symbol [ endDeg %endDeg.2 109 12 18 ];
         %tmp.6 = lgetv %angleDeg;
-        symbol [ angleDeg %tmp.6 128 21 29 ];
+        symbol [ angleDeg %tmp.6 109 21 29 ];
         %tmp.7 = lgetv %arcLenDeg;
-        symbol [ arcLenDeg %tmp.7 128 32 41 ];
+        symbol [ arcLenDeg %tmp.7 109 32 41 ];
         %tmp.8 = 2.0;
         %tmp.9 = div %tmp.7 %tmp.8;
         %tmp.10 = add %tmp.6 %tmp.9;
         lputv %endDeg.2 %tmp.10;
-        symbol [ endDeg %endDeg.2 128 12 18 ];
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 131 8 ]
+        symbol [ endDeg %endDeg.2 109 12 18 ];
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 111 8 ]
         %tmp.11 = lgetv %dc;
-        symbol [ dc %tmp.11 131 8 10 ];
-        symbol [ setPenWidth %tmp.12 131 11 22 ];
+        symbol [ dc %tmp.11 111 8 10 ];
+        symbol [ setPenWidth %tmp.12 111 11 22 ];
         %tmp.12 = getv function %tmp.11 :setPenWidth;
         %tmp.13 = lgetv %ringWidth;
-        symbol [ ringWidth %tmp.13 131 23 32 ];
+        symbol [ ringWidth %tmp.13 111 23 32 ];
         invoke %tmp.11 %tmp.12(%tmp.13);
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 132 8 ]
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 112 8 ]
         %tmp.14 = lgetv %dc;
-        symbol [ dc %tmp.14 132 8 10 ];
-        symbol [ setColor %tmp.15 132 11 19 ];
+        symbol [ dc %tmp.14 112 8 10 ];
+        symbol [ setColor %tmp.15 112 11 19 ];
         %tmp.15 = getv function %tmp.14 :setColor;
         %tmp.16 = lgetv %segColor;
-        symbol [ segColor %tmp.16 132 20 28 ];
+        symbol [ segColor %tmp.16 112 20 28 ];
         %tmp.17 = lgetv %bgColor;
-        symbol [ bgColor %tmp.17 132 30 37 ];
+        symbol [ bgColor %tmp.17 112 30 37 ];
         invoke %tmp.14 %tmp.15(%tmp.16, %tmp.17);
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 133 8 ]
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 113 8 ]
         %tmp.18 = lgetv %dc;
-        symbol [ dc %tmp.18 133 8 10 ];
-        symbol [ drawArc %tmp.19 133 11 18 ];
+        symbol [ dc %tmp.18 113 8 10 ];
+        symbol [ drawArc %tmp.19 113 11 18 ];
         %tmp.19 = getv function %tmp.18 :drawArc;
         %tmp.20 = lgetv %cx;
-        symbol [ cx %tmp.20 133 19 21 ];
+        symbol [ cx %tmp.20 113 19 21 ];
         %tmp.21 = lgetv %cy;
-        symbol [ cy %tmp.21 133 23 25 ];
+        symbol [ cy %tmp.21 113 23 25 ];
         %tmp.22 = lgetv %r;
-        symbol [ r %tmp.22 133 27 28 ];
-        symbol [ Graphics %tmp.23 133 30 38 ];
+        symbol [ r %tmp.22 113 27 28 ];
+        symbol [ Graphics %tmp.23 113 30 38 ];
         %tmp.23 = getm $.Toybox.Graphics;
-        symbol [ ARC_COUNTER_CLOCKWISE %tmp.24 133 39 60 ];
+        symbol [ ARC_COUNTER_CLOCKWISE %tmp.24 113 39 60 ];
         %tmp.24 = getv %tmp.23 :ARC_COUNTER_CLOCKWISE;
         %tmp.25 = lgetv %startDeg.1;
-        symbol [ startDeg %tmp.25 133 62 70 ];
+        symbol [ startDeg %tmp.25 113 62 70 ];
         %tmp.26 = lgetv %endDeg.2;
-        symbol [ endDeg %tmp.26 133 72 78 ];
+        symbol [ endDeg %tmp.26 113 72 78 ];
         invoke %tmp.18 %tmp.19(%tmp.20, %tmp.21, %tmp.22, %tmp.24, %tmp.25, %tmp.26);
-C__develop_garmin_Brighty_source_BrightyView_mc_126_14_134_4_stop:
+C__develop_garmin_Brighty_source_BrightyView_mc_107_14_114_4_stop:
     }
-    [ @file = "C:\develop\garmin\Brighty\source\BrightyView.mc"; @line = 136; @symbol_functiondef = [drawLabel,136,13,22]; @symbol_param<0> = [dc,137,8,10]; @symbol_param<0>_type<0> = [Graphics,137,14,22]; @symbol_param<0>_type<1> = [Dc,137,23,25]; @symbol_param<1> = [cx,138,8,10]; @symbol_param<1>_type<0> = [Numeric,138,14,21]; @symbol_param<2> = [cy,139,8,10]; @symbol_param<2>_type<0> = [Numeric,139,14,21]; @symbol_param<3> = [angleDeg,140,8,16]; @symbol_param<3>_type<0> = [Numeric,140,20,27]; @symbol_param<4> = [r,141,8,9]; @symbol_param<4>_type<0> = [Numeric,141,13,20]; @symbol_param<5> = [text,142,8,12]; @symbol_param<5>_type<0> = [String,142,16,22]; @symbol_param<6> = [fg,143,8,10]; @symbol_param<6>_type<0> = [Graphics,143,14,22]; @symbol_param<6>_type<1> = [ColorType,143,23,32]; @symbol_param<7> = [bg,144,8,10]; @symbol_param<7>_type<0> = [Graphics,144,14,22]; @symbol_param<7>_type<1> = [ColorType,144,23,32]; @symbol_param<8> = [font,145,8,12]; @symbol_param<8>_type<0> = [Graphics,145,16,24]; @symbol_param<8>_type<1> = [FontDefinition,145,25,39]; @symbol_param<9> = [offset,146,8,14]; @symbol_param<9>_type<0> = [Numeric,146,18,25]; ]
+    [ @file = "C:\develop\garmin\Brighty\source\BrightyView.mc"; @line = 116; @symbol_functiondef = [drawLabel,116,13,22]; @symbol_param<0> = [dc,117,8,10]; @symbol_param<0>_type<0> = [Graphics,117,14,22]; @symbol_param<0>_type<1> = [Dc,117,23,25]; @symbol_param<1> = [cx,118,8,10]; @symbol_param<1>_type<0> = [Numeric,118,14,21]; @symbol_param<2> = [cy,119,8,10]; @symbol_param<2>_type<0> = [Numeric,119,14,21]; @symbol_param<3> = [angleDeg,120,8,16]; @symbol_param<3>_type<0> = [Numeric,120,20,27]; @symbol_param<4> = [r,121,8,9]; @symbol_param<4>_type<0> = [Numeric,121,13,20]; @symbol_param<5> = [text,122,8,12]; @symbol_param<5>_type<0> = [String,122,16,22]; @symbol_param<6> = [fg,123,8,10]; @symbol_param<6>_type<0> = [Graphics,123,14,22]; @symbol_param<6>_type<1> = [ColorType,123,23,32]; @symbol_param<7> = [bg,124,8,10]; @symbol_param<7>_type<0> = [Graphics,124,14,22]; @symbol_param<7>_type<1> = [ColorType,124,23,32]; @symbol_param<8> = [font,125,8,12]; @symbol_param<8>_type<0> = [Graphics,125,16,24]; @symbol_param<8>_type<1> = [FontDefinition,125,25,39]; @symbol_param<9> = [offset,126,8,14]; @symbol_param<9>_type<0> = [Numeric,126,18,25]; ]
     function drawLabel(dc as Graphics.Dc, cx as Numeric, cy as Numeric, angleDeg as Numeric, r as Numeric, text as String, fg as Graphics.ColorType, bg as Graphics.ColorType, font as Graphics.FontDefinition, offset as Numeric) {
-C__develop_garmin_Brighty_source_BrightyView_mc_147_6_155_4_start:
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 148 8 ]
-        [ "C__develop_garmin_Brighty_source_BrightyView_mc_147_6_155_4_start" "C__develop_garmin_Brighty_source_BrightyView_mc_147_6_155_4_stop" ]
+C__develop_garmin_Brighty_source_BrightyView_mc_127_6_135_4_start:
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 128 8 ]
+        [ "C__develop_garmin_Brighty_source_BrightyView_mc_127_6_135_4_start" "C__develop_garmin_Brighty_source_BrightyView_mc_127_6_135_4_stop" ]
         %rad.1 = local;
-        symbol [ rad %rad.1 148 12 15 ];
+        symbol [ rad %rad.1 128 12 15 ];
         %tmp.1 = lgetv %angleDeg;
-        symbol [ angleDeg %tmp.1 148 19 27 ];
-        symbol [ Math %tmp.2 148 30 34 ];
+        symbol [ angleDeg %tmp.1 128 19 27 ];
+        symbol [ Math %tmp.2 128 30 34 ];
         %tmp.2 = getm $.Toybox.Math;
-        symbol [ PI %tmp.3 148 35 37 ];
+        symbol [ PI %tmp.3 128 35 37 ];
         %tmp.3 = getv %tmp.2 :PI;
         %tmp.4 = mul %tmp.1 %tmp.3;
         %tmp.5 = 180.0;
         %tmp.6 = div %tmp.4 %tmp.5;
         lputv %rad.1 %tmp.6;
-        symbol [ rad %rad.1 148 12 15 ];
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 149 8 ]
-        [ "C__develop_garmin_Brighty_source_BrightyView_mc_147_6_155_4_start" "C__develop_garmin_Brighty_source_BrightyView_mc_147_6_155_4_stop" ]
+        symbol [ rad %rad.1 128 12 15 ];
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 129 8 ]
+        [ "C__develop_garmin_Brighty_source_BrightyView_mc_127_6_135_4_start" "C__develop_garmin_Brighty_source_BrightyView_mc_127_6_135_4_stop" ]
         %rIcon.2 = local;
-        symbol [ rIcon %rIcon.2 149 12 17 ];
+        symbol [ rIcon %rIcon.2 129 12 17 ];
         %tmp.7 = lgetv %r;
-        symbol [ r %tmp.7 149 20 21 ];
+        symbol [ r %tmp.7 129 20 21 ];
         %tmp.8 = lgetv %offset;
-        symbol [ offset %tmp.8 149 24 30 ];
+        symbol [ offset %tmp.8 129 24 30 ];
         %tmp.9 = sub %tmp.7 %tmp.8;
         lputv %rIcon.2 %tmp.9;
-        symbol [ rIcon %rIcon.2 149 12 17 ];
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 150 8 ]
-        [ "C__develop_garmin_Brighty_source_BrightyView_mc_147_6_155_4_start" "C__develop_garmin_Brighty_source_BrightyView_mc_147_6_155_4_stop" ]
+        symbol [ rIcon %rIcon.2 129 12 17 ];
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 130 8 ]
+        [ "C__develop_garmin_Brighty_source_BrightyView_mc_127_6_135_4_start" "C__develop_garmin_Brighty_source_BrightyView_mc_127_6_135_4_stop" ]
         %x.3 = local;
-        symbol [ x %x.3 150 12 13 ];
+        symbol [ x %x.3 130 12 13 ];
         %tmp.10 = lgetv %cx;
-        symbol [ cx %tmp.10 150 16 18 ];
+        symbol [ cx %tmp.10 130 16 18 ];
         %tmp.11 = lgetv %rIcon.2;
-        symbol [ rIcon %tmp.11 150 21 26 ];
-        symbol [ Math %tmp.12 150 29 33 ];
+        symbol [ rIcon %tmp.11 130 21 26 ];
+        symbol [ Math %tmp.12 130 29 33 ];
         %tmp.12 = getm $.Toybox.Math;
-        symbol [ cos %tmp.13 150 34 37 ];
+        symbol [ cos %tmp.13 130 34 37 ];
         %tmp.13 = getv function %tmp.12 :cos;
         %tmp.14 = lgetv %rad.1;
-        symbol [ rad %tmp.14 150 38 41 ];
+        symbol [ rad %tmp.14 130 38 41 ];
         %tmp.15 = invoke %tmp.12 %tmp.13(%tmp.14);
         %tmp.16 = mul %tmp.11 %tmp.15;
         %tmp.17 = add %tmp.10 %tmp.16;
         lputv %x.3 %tmp.17;
-        symbol [ x %x.3 150 12 13 ];
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 151 8 ]
-        [ "C__develop_garmin_Brighty_source_BrightyView_mc_147_6_155_4_start" "C__develop_garmin_Brighty_source_BrightyView_mc_147_6_155_4_stop" ]
+        symbol [ x %x.3 130 12 13 ];
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 131 8 ]
+        [ "C__develop_garmin_Brighty_source_BrightyView_mc_127_6_135_4_start" "C__develop_garmin_Brighty_source_BrightyView_mc_127_6_135_4_stop" ]
         %y.4 = local;
-        symbol [ y %y.4 151 12 13 ];
+        symbol [ y %y.4 131 12 13 ];
         %tmp.18 = lgetv %cy;
-        symbol [ cy %tmp.18 151 16 18 ];
+        symbol [ cy %tmp.18 131 16 18 ];
         %tmp.19 = lgetv %rIcon.2;
-        symbol [ rIcon %tmp.19 151 21 26 ];
-        symbol [ Math %tmp.20 151 29 33 ];
+        symbol [ rIcon %tmp.19 131 21 26 ];
+        symbol [ Math %tmp.20 131 29 33 ];
         %tmp.20 = getm $.Toybox.Math;
-        symbol [ sin %tmp.21 151 34 37 ];
+        symbol [ sin %tmp.21 131 34 37 ];
         %tmp.21 = getv function %tmp.20 :sin;
         %tmp.22 = lgetv %rad.1;
-        symbol [ rad %tmp.22 151 38 41 ];
+        symbol [ rad %tmp.22 131 38 41 ];
         %tmp.23 = invoke %tmp.20 %tmp.21(%tmp.22);
         %tmp.24 = mul %tmp.19 %tmp.23;
         %tmp.25 = sub %tmp.18 %tmp.24;
         lputv %y.4 %tmp.25;
-        symbol [ y %y.4 151 12 13 ];
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 153 8 ]
+        symbol [ y %y.4 131 12 13 ];
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 133 8 ]
         %tmp.26 = lgetv %dc;
-        symbol [ dc %tmp.26 153 8 10 ];
-        symbol [ setColor %tmp.27 153 11 19 ];
+        symbol [ dc %tmp.26 133 8 10 ];
+        symbol [ setColor %tmp.27 133 11 19 ];
         %tmp.27 = getv function %tmp.26 :setColor;
         %tmp.28 = lgetv %fg;
-        symbol [ fg %tmp.28 153 20 22 ];
+        symbol [ fg %tmp.28 133 20 22 ];
         %tmp.29 = lgetv %bg;
-        symbol [ bg %tmp.29 153 24 26 ];
+        symbol [ bg %tmp.29 133 24 26 ];
         invoke %tmp.26 %tmp.27(%tmp.28, %tmp.29);
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 154 8 ]
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 134 8 ]
         %tmp.30 = lgetv %dc;
-        symbol [ dc %tmp.30 154 8 10 ];
-        symbol [ drawText %tmp.31 154 11 19 ];
+        symbol [ dc %tmp.30 134 8 10 ];
+        symbol [ drawText %tmp.31 134 11 19 ];
         %tmp.31 = getv function %tmp.30 :drawText;
         %tmp.32 = lgetv %x.3;
-        symbol [ x %tmp.32 154 20 21 ];
+        symbol [ x %tmp.32 134 20 21 ];
         %tmp.33 = lgetv %y.4;
-        symbol [ y %tmp.33 154 23 24 ];
+        symbol [ y %tmp.33 134 23 24 ];
         %tmp.34 = lgetv %font;
-        symbol [ font %tmp.34 154 26 30 ];
+        symbol [ font %tmp.34 134 26 30 ];
         %tmp.35 = lgetv %text;
-        symbol [ text %tmp.35 154 32 36 ];
-        symbol [ Graphics %tmp.36 154 38 46 ];
+        symbol [ text %tmp.35 134 32 36 ];
+        symbol [ Graphics %tmp.36 134 38 46 ];
         %tmp.36 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.37 154 47 66 ];
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.37 134 47 66 ];
         %tmp.37 = getv %tmp.36 :TEXT_JUSTIFY_CENTER;
-        symbol [ Graphics %tmp.38 154 69 77 ];
+        symbol [ Graphics %tmp.38 134 69 77 ];
         %tmp.38 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_VCENTER %tmp.39 154 78 98 ];
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.39 134 78 98 ];
         %tmp.39 = getv %tmp.38 :TEXT_JUSTIFY_VCENTER;
         %tmp.40 = bitor %tmp.37 %tmp.39;
         invoke %tmp.30 %tmp.31(%tmp.32, %tmp.33, %tmp.34, %tmp.35, %tmp.40);
-C__develop_garmin_Brighty_source_BrightyView_mc_147_6_155_4_stop:
+C__develop_garmin_Brighty_source_BrightyView_mc_127_6_135_4_stop:
     }
-    [ @file = "C:\develop\garmin\Brighty\source\BrightyView.mc"; @line = 157; @symbol_functiondef = [min,157,13,16]; @symbol_param<0> = [a,157,17,18]; @symbol_param<1> = [b,157,20,21]; ]
+    [ @file = "C:\develop\garmin\Brighty\source\BrightyView.mc"; @line = 137; @symbol_functiondef = [min,137,13,16]; @symbol_param<0> = [a,137,17,18]; @symbol_param<1> = [b,137,20,21]; ]
     function min(a, b) {
-C__develop_garmin_Brighty_source_BrightyView_mc_157_23_159_4_start:
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 158 8 ]
-C__develop_garmin_Brighty_source_BrightyView_mc_158_15_158_27_begin:
+C__develop_garmin_Brighty_source_BrightyView_mc_137_23_139_4_start:
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 138 8 ]
+C__develop_garmin_Brighty_source_BrightyView_mc_138_15_138_27_begin:
         %tmp.1 = lgetv %a;
-        symbol [ a %tmp.1 158 15 16 ];
+        symbol [ a %tmp.1 138 15 16 ];
         %tmp.2 = lgetv %b;
-        symbol [ b %tmp.2 158 19 20 ];
+        symbol [ b %tmp.2 138 19 20 ];
         %tmp.3 = lt %tmp.1 %tmp.2;
-        bf %tmp.3 @C__develop_garmin_Brighty_source_BrightyView_mc_158_15_158_27_false;
-C__develop_garmin_Brighty_source_BrightyView_mc_158_15_158_27_true:
+        bf %tmp.3 @C__develop_garmin_Brighty_source_BrightyView_mc_138_15_138_27_false;
+C__develop_garmin_Brighty_source_BrightyView_mc_138_15_138_27_true:
         %tmp.4 = lgetv %a;
-        symbol [ a %tmp.4 158 23 24 ];
+        symbol [ a %tmp.4 138 23 24 ];
         push %tmp.4;
-        goto @C__develop_garmin_Brighty_source_BrightyView_mc_158_15_158_27_end;
-C__develop_garmin_Brighty_source_BrightyView_mc_158_15_158_27_false:
+        goto @C__develop_garmin_Brighty_source_BrightyView_mc_138_15_138_27_end;
+C__develop_garmin_Brighty_source_BrightyView_mc_138_15_138_27_false:
         %tmp.5 = lgetv %b;
-        symbol [ b %tmp.5 158 27 28 ];
+        symbol [ b %tmp.5 138 27 28 ];
         push %tmp.5;
-C__develop_garmin_Brighty_source_BrightyView_mc_158_15_158_27_end:
-        %tmp.6 = phi [%tmp.3 @C__develop_garmin_Brighty_source_BrightyView_mc_158_15_158_27_begin] [%tmp.4 @C__develop_garmin_Brighty_source_BrightyView_mc_158_15_158_27_true] [%tmp.5 @C__develop_garmin_Brighty_source_BrightyView_mc_158_15_158_27_false] [%tmp.6 @C__develop_garmin_Brighty_source_BrightyView_mc_158_15_158_27_end];
+C__develop_garmin_Brighty_source_BrightyView_mc_138_15_138_27_end:
+        %tmp.6 = phi [%tmp.3 @C__develop_garmin_Brighty_source_BrightyView_mc_138_15_138_27_begin] [%tmp.4 @C__develop_garmin_Brighty_source_BrightyView_mc_138_15_138_27_true] [%tmp.5 @C__develop_garmin_Brighty_source_BrightyView_mc_138_15_138_27_false] [%tmp.6 @C__develop_garmin_Brighty_source_BrightyView_mc_138_15_138_27_end];
         ret %tmp.6;
-C__develop_garmin_Brighty_source_BrightyView_mc_157_23_159_4_stop:
+C__develop_garmin_Brighty_source_BrightyView_mc_137_23_139_4_stop:
     }
-    [ @file = "C:\develop\garmin\Brighty\source\BrightyView.mc"; @line = 161; @symbol_functiondef = [contrastColor,161,13,26]; @symbol_param<0> = [bg,161,27,29]; @symbol_param<0>_type<0> = [Number,161,33,39]; @symbol_return<0> = [Number,161,44,50]; ]
+    [ @file = "C:\develop\garmin\Brighty\source\BrightyView.mc"; @line = 141; @symbol_functiondef = [contrastColor,141,13,26]; @symbol_param<0> = [bg,141,27,29]; @symbol_param<0>_type<0> = [Number,141,33,39]; @symbol_return<0> = [Number,141,44,50]; ]
     function contrastColor(bg as Number) as Number {
-C__develop_garmin_Brighty_source_BrightyView_mc_161_51_178_4_start:
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 162 8 ]
-C__develop_garmin_Brighty_source_BrightyView_mc_162_8_175_8_if_stmt:
+C__develop_garmin_Brighty_source_BrightyView_mc_141_51_154_4_start:
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 142 8 ]
+C__develop_garmin_Brighty_source_BrightyView_mc_142_8_152_8_if_stmt:
         %tmp.1 = lgetv %bg;
-        symbol [ bg %tmp.1 162 12 14 ];
+        symbol [ bg %tmp.1 142 12 14 ];
         %tmp.2 = 0xffffff;
         %tmp.3 = eq %tmp.1 %tmp.2;
-        bf %tmp.3 @C__develop_garmin_Brighty_source_BrightyView_mc_162_8_175_8_if_false;
-C__develop_garmin_Brighty_source_BrightyView_mc_162_8_175_8_if_true:
-C__develop_garmin_Brighty_source_BrightyView_mc_162_28_165_8_start:
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 164 12 ]
-        symbol [ Graphics %tmp.4 164 19 27 ];
+        bf %tmp.3 @C__develop_garmin_Brighty_source_BrightyView_mc_142_8_152_8_if_false;
+C__develop_garmin_Brighty_source_BrightyView_mc_142_8_152_8_if_true:
+C__develop_garmin_Brighty_source_BrightyView_mc_142_28_144_8_start:
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 143 12 ]
+        symbol [ Graphics %tmp.4 143 19 27 ];
         %tmp.4 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.5 164 28 39 ];
+        symbol [ COLOR_BLACK %tmp.5 143 28 39 ];
         %tmp.5 = getv %tmp.4 :COLOR_BLACK;
         ret %tmp.5;
-C__develop_garmin_Brighty_source_BrightyView_mc_162_28_165_8_stop:
-        goto @C__develop_garmin_Brighty_source_BrightyView_mc_162_8_175_8_if_end;
-C__develop_garmin_Brighty_source_BrightyView_mc_162_8_175_8_if_false:
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 165 15 ]
-C__develop_garmin_Brighty_source_BrightyView_mc_165_15_175_8_if_stmt:
+C__develop_garmin_Brighty_source_BrightyView_mc_142_28_144_8_stop:
+        goto @C__develop_garmin_Brighty_source_BrightyView_mc_142_8_152_8_if_end;
+C__develop_garmin_Brighty_source_BrightyView_mc_142_8_152_8_if_false:
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 144 15 ]
+C__develop_garmin_Brighty_source_BrightyView_mc_144_15_152_8_if_stmt:
         %tmp.6 = lgetv %bg;
-        symbol [ bg %tmp.6 165 19 21 ];
+        symbol [ bg %tmp.6 144 19 21 ];
         %tmp.7 = 0xcccccc;
         %tmp.8 = eq %tmp.6 %tmp.7;
-        bf %tmp.8 @C__develop_garmin_Brighty_source_BrightyView_mc_165_15_175_8_if_false;
-C__develop_garmin_Brighty_source_BrightyView_mc_165_15_175_8_if_true:
-C__develop_garmin_Brighty_source_BrightyView_mc_165_35_168_8_start:
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 167 12 ]
-        symbol [ Graphics %tmp.9 167 19 27 ];
+        bf %tmp.8 @C__develop_garmin_Brighty_source_BrightyView_mc_144_15_152_8_if_false;
+C__develop_garmin_Brighty_source_BrightyView_mc_144_15_152_8_if_true:
+C__develop_garmin_Brighty_source_BrightyView_mc_144_35_146_8_start:
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 145 12 ]
+        symbol [ Graphics %tmp.9 145 19 27 ];
         %tmp.9 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.10 167 28 39 ];
+        symbol [ COLOR_BLACK %tmp.10 145 28 39 ];
         %tmp.10 = getv %tmp.9 :COLOR_BLACK;
         ret %tmp.10;
-C__develop_garmin_Brighty_source_BrightyView_mc_165_35_168_8_stop:
-        goto @C__develop_garmin_Brighty_source_BrightyView_mc_165_15_175_8_if_end;
-C__develop_garmin_Brighty_source_BrightyView_mc_165_15_175_8_if_false:
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 168 15 ]
-C__develop_garmin_Brighty_source_BrightyView_mc_168_15_175_8_if_stmt:
+C__develop_garmin_Brighty_source_BrightyView_mc_144_35_146_8_stop:
+        goto @C__develop_garmin_Brighty_source_BrightyView_mc_144_15_152_8_if_end;
+C__develop_garmin_Brighty_source_BrightyView_mc_144_15_152_8_if_false:
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 146 15 ]
+C__develop_garmin_Brighty_source_BrightyView_mc_146_15_152_8_if_stmt:
         %tmp.11 = lgetv %bg;
-        symbol [ bg %tmp.11 168 19 21 ];
+        symbol [ bg %tmp.11 146 19 21 ];
         %tmp.12 = 0x999999;
         %tmp.13 = eq %tmp.11 %tmp.12;
-        bf %tmp.13 @C__develop_garmin_Brighty_source_BrightyView_mc_168_15_175_8_if_false;
-C__develop_garmin_Brighty_source_BrightyView_mc_168_15_175_8_if_true:
-C__develop_garmin_Brighty_source_BrightyView_mc_168_35_171_8_start:
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 170 12 ]
-        symbol [ Graphics %tmp.14 170 19 27 ];
+        bf %tmp.13 @C__develop_garmin_Brighty_source_BrightyView_mc_146_15_152_8_if_false;
+C__develop_garmin_Brighty_source_BrightyView_mc_146_15_152_8_if_true:
+C__develop_garmin_Brighty_source_BrightyView_mc_146_35_148_8_start:
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 147 12 ]
+        symbol [ Graphics %tmp.14 147 19 27 ];
         %tmp.14 = getm $.Toybox.Graphics;
-        symbol [ COLOR_WHITE %tmp.15 170 28 39 ];
+        symbol [ COLOR_WHITE %tmp.15 147 28 39 ];
         %tmp.15 = getv %tmp.14 :COLOR_WHITE;
         ret %tmp.15;
-C__develop_garmin_Brighty_source_BrightyView_mc_168_35_171_8_stop:
-        goto @C__develop_garmin_Brighty_source_BrightyView_mc_168_15_175_8_if_end;
-C__develop_garmin_Brighty_source_BrightyView_mc_168_15_175_8_if_false:
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 171 15 ]
-C__develop_garmin_Brighty_source_BrightyView_mc_171_15_175_8_if_stmt:
+C__develop_garmin_Brighty_source_BrightyView_mc_146_35_148_8_stop:
+        goto @C__develop_garmin_Brighty_source_BrightyView_mc_146_15_152_8_if_end;
+C__develop_garmin_Brighty_source_BrightyView_mc_146_15_152_8_if_false:
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 148 15 ]
+C__develop_garmin_Brighty_source_BrightyView_mc_148_15_152_8_if_stmt:
         %tmp.16 = lgetv %bg;
-        symbol [ bg %tmp.16 171 19 21 ];
-        symbol [ Graphics %tmp.17 171 25 33 ];
+        symbol [ bg %tmp.16 148 19 21 ];
+        symbol [ Graphics %tmp.17 148 25 33 ];
         %tmp.17 = getm $.Toybox.Graphics;
-        symbol [ COLOR_RED %tmp.18 171 34 43 ];
+        symbol [ COLOR_RED %tmp.18 148 34 43 ];
         %tmp.18 = getv %tmp.17 :COLOR_RED;
         %tmp.19 = eq %tmp.16 %tmp.18;
-        bf %tmp.19 @C__develop_garmin_Brighty_source_BrightyView_mc_171_15_175_8_if_false;
-C__develop_garmin_Brighty_source_BrightyView_mc_171_15_175_8_if_true:
-C__develop_garmin_Brighty_source_BrightyView_mc_171_45_173_8_start:
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 172 12 ]
-        symbol [ Graphics %tmp.20 172 19 27 ];
+        bf %tmp.19 @C__develop_garmin_Brighty_source_BrightyView_mc_148_15_152_8_if_false;
+C__develop_garmin_Brighty_source_BrightyView_mc_148_15_152_8_if_true:
+C__develop_garmin_Brighty_source_BrightyView_mc_148_45_150_8_start:
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 149 12 ]
+        symbol [ Graphics %tmp.20 149 19 27 ];
         %tmp.20 = getm $.Toybox.Graphics;
-        symbol [ COLOR_WHITE %tmp.21 172 28 39 ];
+        symbol [ COLOR_WHITE %tmp.21 149 28 39 ];
         %tmp.21 = getv %tmp.20 :COLOR_WHITE;
         ret %tmp.21;
-C__develop_garmin_Brighty_source_BrightyView_mc_171_45_173_8_stop:
-        goto @C__develop_garmin_Brighty_source_BrightyView_mc_171_15_175_8_if_end;
-C__develop_garmin_Brighty_source_BrightyView_mc_171_15_175_8_if_false:
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 173 15 ]
-C__develop_garmin_Brighty_source_BrightyView_mc_173_15_175_8_if_stmt:
+C__develop_garmin_Brighty_source_BrightyView_mc_148_45_150_8_stop:
+        goto @C__develop_garmin_Brighty_source_BrightyView_mc_148_15_152_8_if_end;
+C__develop_garmin_Brighty_source_BrightyView_mc_148_15_152_8_if_false:
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 150 15 ]
+C__develop_garmin_Brighty_source_BrightyView_mc_150_15_152_8_if_stmt:
         %tmp.22 = lgetv %bg;
-        symbol [ bg %tmp.22 173 19 21 ];
-        symbol [ Graphics %tmp.23 173 25 33 ];
+        symbol [ bg %tmp.22 150 19 21 ];
+        symbol [ Graphics %tmp.23 150 25 33 ];
         %tmp.23 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.24 173 34 45 ];
+        symbol [ COLOR_BLACK %tmp.24 150 34 45 ];
         %tmp.24 = getv %tmp.23 :COLOR_BLACK;
         %tmp.25 = eq %tmp.22 %tmp.24;
-        bf %tmp.25 @C__develop_garmin_Brighty_source_BrightyView_mc_173_15_175_8_if_end;
-C__develop_garmin_Brighty_source_BrightyView_mc_173_15_175_8_if_true:
-C__develop_garmin_Brighty_source_BrightyView_mc_173_47_175_8_start:
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 174 12 ]
-        symbol [ Graphics %tmp.26 174 19 27 ];
+        bf %tmp.25 @C__develop_garmin_Brighty_source_BrightyView_mc_150_15_152_8_if_end;
+C__develop_garmin_Brighty_source_BrightyView_mc_150_15_152_8_if_true:
+C__develop_garmin_Brighty_source_BrightyView_mc_150_47_152_8_start:
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 151 12 ]
+        symbol [ Graphics %tmp.26 151 19 27 ];
         %tmp.26 = getm $.Toybox.Graphics;
-        symbol [ COLOR_WHITE %tmp.27 174 28 39 ];
+        symbol [ COLOR_WHITE %tmp.27 151 28 39 ];
         %tmp.27 = getv %tmp.26 :COLOR_WHITE;
         ret %tmp.27;
-C__develop_garmin_Brighty_source_BrightyView_mc_173_47_175_8_stop:
-        goto @C__develop_garmin_Brighty_source_BrightyView_mc_173_15_175_8_if_end;
-C__develop_garmin_Brighty_source_BrightyView_mc_173_15_175_8_if_end:
-C__develop_garmin_Brighty_source_BrightyView_mc_171_15_175_8_if_end:
-C__develop_garmin_Brighty_source_BrightyView_mc_168_15_175_8_if_end:
-C__develop_garmin_Brighty_source_BrightyView_mc_165_15_175_8_if_end:
-C__develop_garmin_Brighty_source_BrightyView_mc_162_8_175_8_if_end:
-[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 177 8 ]
-        symbol [ Graphics %tmp.28 177 15 23 ];
+C__develop_garmin_Brighty_source_BrightyView_mc_150_47_152_8_stop:
+        goto @C__develop_garmin_Brighty_source_BrightyView_mc_150_15_152_8_if_end;
+C__develop_garmin_Brighty_source_BrightyView_mc_150_15_152_8_if_end:
+C__develop_garmin_Brighty_source_BrightyView_mc_148_15_152_8_if_end:
+C__develop_garmin_Brighty_source_BrightyView_mc_146_15_152_8_if_end:
+C__develop_garmin_Brighty_source_BrightyView_mc_144_15_152_8_if_end:
+C__develop_garmin_Brighty_source_BrightyView_mc_142_8_152_8_if_end:
+[ "C:\develop\garmin\Brighty\source\BrightyView.mc" 153 8 ]
+        symbol [ Graphics %tmp.28 153 15 23 ];
         %tmp.28 = getm $.Toybox.Graphics;
-        symbol [ COLOR_WHITE %tmp.29 177 24 35 ];
+        symbol [ COLOR_WHITE %tmp.29 153 24 35 ];
         %tmp.29 = getv %tmp.28 :COLOR_WHITE;
         ret %tmp.29;
-C__develop_garmin_Brighty_source_BrightyView_mc_161_51_178_4_stop:
+C__develop_garmin_Brighty_source_BrightyView_mc_141_51_154_4_stop:
     }
 }
 [ @file = "C:\develop\garmin\Brighty\source\BrightyView.mc"; @line = 1; ]

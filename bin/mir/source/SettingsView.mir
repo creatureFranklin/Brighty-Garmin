@@ -15,118 +15,129 @@ class SettingsView extends WatchUi.View {
     static
     <init> {
     }
-    [ @file = "C:\develop\garmin\Brighty\source\SettingsView.mc"; @line = 7; @symbol_functiondef = [onShow,7,13,19]; ]
+    [ @file = "C:\develop\garmin\Brighty\source\SettingsView.mc"; @line = 7; @symbol_functiondef = [initialize,7,13,23]; ]
+    function initialize() as Void {
+C__develop_garmin_Brighty_source_SettingsView_mc_7_26_9_4_start:
+[ "C:\develop\garmin\Brighty\source\SettingsView.mc" 8 8 ]
+        symbol [ View %tmp.2 8 8 12 ];
+        %tmp.2 = getv ? :View;
+        symbol [ initialize %tmp.3 8 13 23 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+C__develop_garmin_Brighty_source_SettingsView_mc_7_26_9_4_stop:
+    }
+    [ @file = "C:\develop\garmin\Brighty\source\SettingsView.mc"; @line = 11; @symbol_functiondef = [onShow,11,13,19]; ]
     function onShow() {
     }
-    [ @file = "C:\develop\garmin\Brighty\source\SettingsView.mc"; @line = 9; @symbol_functiondef = [onUpdate,9,13,21]; @symbol_param<0> = [dc,9,22,24]; @symbol_param<0>_type<0> = [Graphics,9,28,36]; @symbol_param<0>_type<1> = [Dc,9,37,39]; ]
+    [ @file = "C:\develop\garmin\Brighty\source\SettingsView.mc"; @line = 13; @symbol_functiondef = [onUpdate,13,13,21]; @symbol_param<0> = [dc,13,22,24]; @symbol_param<0>_type<0> = [Graphics,13,28,36]; @symbol_param<0>_type<1> = [Dc,13,37,39]; ]
     function onUpdate(dc as Graphics.Dc) {
-C__develop_garmin_Brighty_source_SettingsView_mc_9_41_16_4_start:
-[ "C:\develop\garmin\Brighty\source\SettingsView.mc" 10 8 ]
-        [ "C__develop_garmin_Brighty_source_SettingsView_mc_9_41_16_4_start" "C__develop_garmin_Brighty_source_SettingsView_mc_9_41_16_4_stop" ]
+C__develop_garmin_Brighty_source_SettingsView_mc_13_41_20_4_start:
+[ "C:\develop\garmin\Brighty\source\SettingsView.mc" 14 8 ]
+        [ "C__develop_garmin_Brighty_source_SettingsView_mc_13_41_20_4_start" "C__develop_garmin_Brighty_source_SettingsView_mc_13_41_20_4_stop" ]
         %w.1 = local;
-        symbol [ w %w.1 10 12 13 ];
+        symbol [ w %w.1 14 12 13 ];
         %tmp.1 = lgetv %dc;
-        symbol [ dc %tmp.1 10 16 18 ];
-        symbol [ getWidth %tmp.2 10 19 27 ];
+        symbol [ dc %tmp.1 14 16 18 ];
+        symbol [ getWidth %tmp.2 14 19 27 ];
         %tmp.2 = getv function %tmp.1 :getWidth;
         %tmp.3 = invoke %tmp.1 %tmp.2();
         lputv %w.1 %tmp.3;
-        symbol [ w %w.1 10 12 13 ];
-        [ "C__develop_garmin_Brighty_source_SettingsView_mc_9_41_16_4_start" "C__develop_garmin_Brighty_source_SettingsView_mc_9_41_16_4_stop" ]
+        symbol [ w %w.1 14 12 13 ];
+        [ "C__develop_garmin_Brighty_source_SettingsView_mc_13_41_20_4_start" "C__develop_garmin_Brighty_source_SettingsView_mc_13_41_20_4_stop" ]
         %h.2 = local;
-        symbol [ h %h.2 11 12 13 ];
+        symbol [ h %h.2 15 12 13 ];
         %tmp.4 = lgetv %dc;
-        symbol [ dc %tmp.4 11 16 18 ];
-        symbol [ getHeight %tmp.5 11 19 28 ];
+        symbol [ dc %tmp.4 15 16 18 ];
+        symbol [ getHeight %tmp.5 15 19 28 ];
         %tmp.5 = getv function %tmp.4 :getHeight;
         %tmp.6 = invoke %tmp.4 %tmp.5();
         lputv %h.2 %tmp.6;
-        symbol [ h %h.2 11 12 13 ];
-[ "C:\develop\garmin\Brighty\source\SettingsView.mc" 12 8 ]
+        symbol [ h %h.2 15 12 13 ];
+[ "C:\develop\garmin\Brighty\source\SettingsView.mc" 16 8 ]
         %tmp.7 = lgetv %dc;
-        symbol [ dc %tmp.7 12 8 10 ];
-        symbol [ setColor %tmp.8 12 11 19 ];
+        symbol [ dc %tmp.7 16 8 10 ];
+        symbol [ setColor %tmp.8 16 11 19 ];
         %tmp.8 = getv function %tmp.7 :setColor;
-        symbol [ Graphics %tmp.9 12 20 28 ];
+        symbol [ Graphics %tmp.9 16 20 28 ];
         %tmp.9 = getm $.Toybox.Graphics;
-        symbol [ COLOR_WHITE %tmp.10 12 29 40 ];
+        symbol [ COLOR_WHITE %tmp.10 16 29 40 ];
         %tmp.10 = getv %tmp.9 :COLOR_WHITE;
-        symbol [ Graphics %tmp.11 12 42 50 ];
+        symbol [ Graphics %tmp.11 16 42 50 ];
         %tmp.11 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.12 12 51 62 ];
+        symbol [ COLOR_BLACK %tmp.12 16 51 62 ];
         %tmp.12 = getv %tmp.11 :COLOR_BLACK;
         invoke %tmp.7 %tmp.8(%tmp.10, %tmp.12);
-[ "C:\develop\garmin\Brighty\source\SettingsView.mc" 13 8 ]
+[ "C:\develop\garmin\Brighty\source\SettingsView.mc" 17 8 ]
         %tmp.13 = lgetv %dc;
-        symbol [ dc %tmp.13 13 8 10 ];
-        symbol [ clear %tmp.14 13 11 16 ];
+        symbol [ dc %tmp.13 17 8 10 ];
+        symbol [ clear %tmp.14 17 11 16 ];
         %tmp.14 = getv function %tmp.13 :clear;
         invoke %tmp.13 %tmp.14();
-[ "C:\develop\garmin\Brighty\source\SettingsView.mc" 14 8 ]
+[ "C:\develop\garmin\Brighty\source\SettingsView.mc" 18 8 ]
         %tmp.15 = lgetv %dc;
-        symbol [ dc %tmp.15 14 8 10 ];
-        symbol [ drawText %tmp.16 14 11 19 ];
+        symbol [ dc %tmp.15 18 8 10 ];
+        symbol [ drawText %tmp.16 18 11 19 ];
         %tmp.16 = getv function %tmp.15 :drawText;
         %tmp.17 = lgetv %w.1;
-        symbol [ w %tmp.17 14 20 21 ];
+        symbol [ w %tmp.17 18 20 21 ];
         %tmp.18 = 2;
         %tmp.19 = div %tmp.17 %tmp.18;
         %tmp.20 = lgetv %h.2;
-        symbol [ h %tmp.20 14 27 28 ];
+        symbol [ h %tmp.20 18 27 28 ];
         %tmp.21 = 2;
         %tmp.22 = div %tmp.20 %tmp.21;
-        symbol [ Graphics %tmp.23 14 34 42 ];
+        symbol [ Graphics %tmp.23 18 34 42 ];
         %tmp.23 = getm $.Toybox.Graphics;
-        symbol [ FONT_MEDIUM %tmp.24 14 43 54 ];
+        symbol [ FONT_MEDIUM %tmp.24 18 43 54 ];
         %tmp.24 = getv %tmp.23 :FONT_MEDIUM;
         %tmp.25 = "Nastavení";
-        symbol [ Graphics %tmp.26 14 69 77 ];
+        symbol [ Graphics %tmp.26 18 69 77 ];
         %tmp.26 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.27 14 78 97 ];
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.27 18 78 97 ];
         %tmp.27 = getv %tmp.26 :TEXT_JUSTIFY_CENTER;
-        symbol [ Graphics %tmp.28 14 100 108 ];
+        symbol [ Graphics %tmp.28 18 100 108 ];
         %tmp.28 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_VCENTER %tmp.29 14 109 129 ];
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.29 18 109 129 ];
         %tmp.29 = getv %tmp.28 :TEXT_JUSTIFY_VCENTER;
         %tmp.30 = bitor %tmp.27 %tmp.29;
         invoke %tmp.15 %tmp.16(%tmp.19, %tmp.22, %tmp.24, %tmp.25, %tmp.30);
-C__develop_garmin_Brighty_source_SettingsView_mc_9_41_16_4_stop:
+C__develop_garmin_Brighty_source_SettingsView_mc_13_41_20_4_stop:
     }
-    [ @file = "C:\develop\garmin\Brighty\source\SettingsView.mc"; @line = 18; @symbol_functiondef = [onKey,18,13,18]; @symbol_param<0> = [key,18,19,22]; @symbol_param<0>_type<0> = [WatchUi,18,26,33]; @symbol_param<0>_type<1> = [Key,18,34,37]; @symbol_return<0> = [Boolean,18,42,49]; ]
+    [ @file = "C:\develop\garmin\Brighty\source\SettingsView.mc"; @line = 22; @symbol_functiondef = [onKey,22,13,18]; @symbol_param<0> = [key,22,19,22]; @symbol_param<0>_type<0> = [WatchUi,22,26,33]; @symbol_param<0>_type<1> = [Key,22,34,37]; @symbol_return<0> = [Boolean,22,42,49]; ]
     function onKey(key as WatchUi.Key) as Boolean {
-C__develop_garmin_Brighty_source_SettingsView_mc_18_50_24_4_start:
-[ "C:\develop\garmin\Brighty\source\SettingsView.mc" 19 8 ]
-C__develop_garmin_Brighty_source_SettingsView_mc_19_8_22_8_if_stmt:
+C__develop_garmin_Brighty_source_SettingsView_mc_22_50_28_4_start:
+[ "C:\develop\garmin\Brighty\source\SettingsView.mc" 23 8 ]
+C__develop_garmin_Brighty_source_SettingsView_mc_23_8_26_8_if_stmt:
         %tmp.1 = lgetv %key;
-        symbol [ key %tmp.1 19 12 15 ];
-        symbol [ WatchUi %tmp.2 19 19 26 ];
+        symbol [ key %tmp.1 23 12 15 ];
+        symbol [ WatchUi %tmp.2 23 19 26 ];
         %tmp.2 = getm $.Toybox.WatchUi;
-        symbol [ KEY_ESC %tmp.3 19 27 34 ];
+        symbol [ KEY_ESC %tmp.3 23 27 34 ];
         %tmp.3 = getv %tmp.2 :KEY_ESC;
         %tmp.4 = eq %tmp.1 %tmp.3;
-        bf %tmp.4 @C__develop_garmin_Brighty_source_SettingsView_mc_19_8_22_8_if_end;
-C__develop_garmin_Brighty_source_SettingsView_mc_19_8_22_8_if_true:
-C__develop_garmin_Brighty_source_SettingsView_mc_19_36_22_8_start:
-[ "C:\develop\garmin\Brighty\source\SettingsView.mc" 20 12 ]
-        symbol [ WatchUi %tmp.5 20 12 19 ];
+        bf %tmp.4 @C__develop_garmin_Brighty_source_SettingsView_mc_23_8_26_8_if_end;
+C__develop_garmin_Brighty_source_SettingsView_mc_23_8_26_8_if_true:
+C__develop_garmin_Brighty_source_SettingsView_mc_23_36_26_8_start:
+[ "C:\develop\garmin\Brighty\source\SettingsView.mc" 24 12 ]
+        symbol [ WatchUi %tmp.5 24 12 19 ];
         %tmp.5 = getm $.Toybox.WatchUi;
-        symbol [ popView %tmp.6 20 20 27 ];
+        symbol [ popView %tmp.6 24 20 27 ];
         %tmp.6 = getv function %tmp.5 :popView;
-        symbol [ WatchUi %tmp.7 20 28 35 ];
+        symbol [ WatchUi %tmp.7 24 28 35 ];
         %tmp.7 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_IMMEDIATE %tmp.8 20 36 51 ];
+        symbol [ SLIDE_IMMEDIATE %tmp.8 24 36 51 ];
         %tmp.8 = getv %tmp.7 :SLIDE_IMMEDIATE;
         invoke %tmp.5 %tmp.6(%tmp.8);
-[ "C:\develop\garmin\Brighty\source\SettingsView.mc" 21 12 ]
+[ "C:\develop\garmin\Brighty\source\SettingsView.mc" 25 12 ]
         %tmp.9 = true;
         ret %tmp.9;
-C__develop_garmin_Brighty_source_SettingsView_mc_19_36_22_8_stop:
-        goto @C__develop_garmin_Brighty_source_SettingsView_mc_19_8_22_8_if_end;
-C__develop_garmin_Brighty_source_SettingsView_mc_19_8_22_8_if_end:
-[ "C:\develop\garmin\Brighty\source\SettingsView.mc" 23 8 ]
+C__develop_garmin_Brighty_source_SettingsView_mc_23_36_26_8_stop:
+        goto @C__develop_garmin_Brighty_source_SettingsView_mc_23_8_26_8_if_end;
+C__develop_garmin_Brighty_source_SettingsView_mc_23_8_26_8_if_end:
+[ "C:\develop\garmin\Brighty\source\SettingsView.mc" 27 8 ]
         %tmp.10 = false;
         ret %tmp.10;
-C__develop_garmin_Brighty_source_SettingsView_mc_18_50_24_4_stop:
+C__develop_garmin_Brighty_source_SettingsView_mc_22_50_28_4_stop:
     }
 }
 [ @file = "C:\develop\garmin\Brighty\source\SettingsView.mc"; @line = 1; ]

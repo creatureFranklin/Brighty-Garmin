@@ -1,19 +1,36 @@
 <strings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
     <string id="AppName">Brighty</string>
-
-    <!-- <string id="prompt">Click the menu button</string>
-
-    <string id="menu_label_1">Item 1</string>
-    <string id="menu_label_2">Item 2</string> -->
-
     
-<string id="SettingsTitle">Settings title</string>
-<string id="ColorLabel">Color label</string>
+    <string id="SettingsTitle">Settings title</string>
+    <string id="ColorLabel">Color label</string>
+    
+    <string
+        id="selected">selected</string>
+    <string id="save">Save</string>
+    <string id="back">Back</string>
 
-<string
-        id="MenuOption1">Menu Option 1</string>
-<string id="MenuOption2">Menu Option 2</string>
+    <string
+        id="settings">Settings</string>
+    <string id="colors">Colors</string>
+    <string
+        id="colors">Colors</string>
+    <string id="on">On</string>
+    <string id="off">Off</string>
+    <string id="hints">Hints</string>
+    <string
+        id="autoOff">Auto-off</string>
+        <string
+        id="colorsMultipleSelection">Colors (multiple selection)</string>
+    
+    <string
+        id="supportMe">Support me</string>
+    <string id="donateOpenTheCamera">Open the camera/QR scanner</string>
+    <string id="donateInfo">Donate</string>
+    <string
+        id="donateInfoTitle">Donate</string>
+    <string
+        id="donateInfoPrompt">Open in the watch app: Menu → Support me</string>
 
 
 </strings>

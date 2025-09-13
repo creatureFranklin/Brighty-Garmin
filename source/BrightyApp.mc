@@ -17,10 +17,10 @@ class BrightyApp extends Application.AppBase {
     }
 
     function onSettingsChanged() {
-        // Přepočítej lokální cache nastavení (pokud nějakou máš)
+        // Recalculate local cache of settings (if you keep any)
         SettingsService.refreshCacheFromProperties();
 
-        // Pokud jsi v nastavení na hodinkách nebo hlavním view, refreshni UI
+        // If you are in settings on the watch or in the main view, refresh the UI
         WatchUi.requestUpdate();
     }
 }

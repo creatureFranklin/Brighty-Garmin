@@ -9,4 +9,7 @@
 
     <!-- Auto-off (v sekundách) -->
     <property id="autoOffSec" type="number">0</property>
+
+    <property id="donateInfo" type="string">buymeacoffee.com/reminektomq</property>
+
 </properties>

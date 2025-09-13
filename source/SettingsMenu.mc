@@ -4,32 +4,32 @@ using Toybox.Application;
 import Toybox.Lang;
 using Toybox.System;
 
-// ---------- Pevná ID položek (Symbol) ----------
+// ---------- Fixed item IDs (Symbol) ----------
 class SettingsIds {
     public static const COLOR_IDS = [:color0, :color1, :color2, :color3, :color4, :color5];
     public static const TIMEOUT_IDS = [:timeout0, :timeout1, :timeout2, :timeout3, :timeout4, :timeout5, :timeout6];
 
-    public static const ID_COLOR = :color; // hlavní menu → podmenu barev (multiselect)
-    public static const ID_SAVE_COLORS = :save; // hlavní menu -> podmenu barev "Uložit"
-    public static const ID_HINTS = :hints; // hlavní menu toggle
-    public static const ID_TIMEOUT = :timeout; // hlavní menu → podmenu timeout
-    public static const ID_BACK = :back; // univerzální "Zpět"
+    public static const ID_COLOR = :color; // main menu → color submenu (multiselect)
+    public static const ID_SAVE_COLORS = :save; // main menu → color submenu "Save"
+    public static const ID_HINTS = :hints; // main menu toggle
+    public static const ID_TIMEOUT = :timeout; // main menu → timeout submenu
+    public static const ID_BACK = :back; // universal "Back"
+
+    public static const ID_DONATE = :donate;
 }
 
-// ---------- Model: načítání/ukládání nastavení ----------
 class SettingsModel {
-    public var colorLabels = ["White", "Green", "Red"]; // TODO: Dark gray, Light gray
+    public var colorLabels = ["White", "Green", "Red"];
     public var colorValues = [Graphics.COLOR_WHITE, Graphics.COLOR_GREEN, Graphics.COLOR_RED];
 
     public var timeoutLabels = ["Never", "5 s", "10 s", "30 s", "60 s"];
     public var timeoutValues = [0, 5, 10, 30, 60];
 
-    // ---- MULTISELECT BARVY ----
+    // ---- Colors multiselect ----
     function getSelectedColors() {
         var arr = Application.getApp().getProperty("mainColors");
         if (arr == null) {
-            // Default: aspoň jedna barva
-            arr = [Graphics.COLOR_WHITE];
+            arr = [Graphics.COLOR_WHITE]; // Default color
         }
         return arr;
     }
@@ -57,7 +57,7 @@ class SettingsModel {
             sel.add(val);
         }
 
-        // Bezpečnost: vždy aspoň 1 barva
+        // Check if atleast one color
         if (sel.size() == 0) {
             sel.add(Graphics.COLOR_WHITE);
         }
@@ -65,7 +65,6 @@ class SettingsModel {
         setSelectedColors(sel);
     }
 
-    // Souhrn pro hlavní menu (krátký text)
     function colorsSummaryLabel() {
         var sel = getSelectedColors();
         var names = [];
@@ -89,21 +88,21 @@ class SettingsModel {
             return Utils.joinArray(names, ", ");
         }
 
-        return names.size() + " vybrané";
+        return names.size() + " " + Rez.Strings.selected;
     }
 
-    // ---- Kompatibilita se single-select (pokud to někde čteš) ----
+    /**
+     * Kompatibilita se single-select
+     */
     function getColor() {
-        // Vrací "první" z vybraných, pro starší části aplikace
+        // returns first color from all selected colors
         var sel = getSelectedColors();
         return sel.size() > 0 ? sel[0] : Graphics.COLOR_WHITE;
     }
     function setColor(c) {
-        // Pokud bys někde zavolal setColor, přepíšeme multiselect na jedinou barvu
         setSelectedColors([c]);
     }
 
-    // ---- Další nastavení ----
     function getHints() {
         var v = Application.getApp().getProperty("showHints");
         if (v == null) {
@@ -122,6 +121,7 @@ class SettingsModel {
         }
         return v;
     }
+
     function setAutoOff(sec) {
         Application.getApp().setProperty("autoOffSec", sec);
     }
@@ -146,26 +146,28 @@ class SettingsMenuBuilder {
 
     function buildMainMenu() {
         var m = new WatchUi.Menu();
-        m.setTitle("Nastavení");
+        m.setTitle(Rez.Strings.settings);
 
-        // Barvy (multiselect) – ukazuj souhrn
-        m.addItem("Barvy: " + model.colorsSummaryLabel(), SettingsIds.ID_COLOR);
+        // Colors (multiselect) – show summary
+        m.addItem(Rez.Strings.colors + ": " + model.colorsSummaryLabel(), SettingsIds.ID_COLOR);
 
-        // Hinty
-        var hintsTxt = model.getHints() ? "On" : "Off";
-        m.addItem("Hinty u tlačítek: " + hintsTxt, SettingsIds.ID_HINTS);
+        // Hints
+        var hintsTxt = model.getHints() ? Rez.Strings.on : Rez.Strings.off;
+        m.addItem(Rez.Strings.hints + ": " + hintsTxt, SettingsIds.ID_HINTS);
 
         // Auto-off
         var tIdx = model.indexOfValue(model.timeoutValues, model.getAutoOff());
-        m.addItem("Auto-vypnutí: " + model.timeoutLabels[tIdx], SettingsIds.ID_TIMEOUT);
+        m.addItem(Rez.Strings.autoOff + ": " + model.timeoutLabels[tIdx], SettingsIds.ID_TIMEOUT);
 
-        m.addItem("Zpět", SettingsIds.ID_BACK);
+        m.addItem(Rez.Strings.supportMe, SettingsIds.ID_DONATE);
+
+        // m.addItem("Zpět", SettingsIds.ID_BACK);
         return m;
     }
 
     function buildColorMenu(currentSel as Array) {
         var m = new WatchUi.Menu();
-        m.setTitle("Barvy (více výběrů)");
+        m.setTitle(Rez.Strings.colorsMultipleSelection);
 
         var n = model.colorLabels.size();
         if (n > SettingsIds.COLOR_IDS.size()) {
@@ -175,7 +177,7 @@ class SettingsMenuBuilder {
         for (var i = 0; i < n; i += 1) {
             var val = model.colorValues[i];
             var picked = false;
-            // rychlá kontrola v currentSel
+
             for (var j = 0; j < currentSel.size(); j += 1) {
                 if (currentSel[j] == val) {
                     picked = true;
@@ -186,15 +188,14 @@ class SettingsMenuBuilder {
             m.addItem(mark + model.colorLabels[i], SettingsIds.COLOR_IDS[i]);
         }
 
-        // Akční tlačítka:
-        m.addItem("Uložit", SettingsIds.ID_SAVE_COLORS);
-        m.addItem("Zpět", SettingsIds.ID_BACK);
+        m.addItem(Rez.Strings.save, SettingsIds.ID_SAVE_COLORS);
+        m.addItem(Rez.Strings.back, SettingsIds.ID_BACK);
         return m;
     }
 
     function buildTimeoutMenu() {
         var m = new WatchUi.Menu();
-        m.setTitle("Auto-vypnutí");
+        m.setTitle(Rez.Strings.autoOff);
 
         var n = model.timeoutLabels.size();
         if (n > SettingsIds.TIMEOUT_IDS.size()) {
@@ -204,11 +205,10 @@ class SettingsMenuBuilder {
         for (var i = 0; i < n; i += 1) {
             m.addItem(model.timeoutLabels[i], SettingsIds.TIMEOUT_IDS[i]);
         }
-        m.addItem("Zpět", SettingsIds.ID_BACK);
+        m.addItem(Rez.Strings.back, SettingsIds.ID_BACK);
         return m;
     }
 
-    // Refresh helpery
     function refreshMainMenu() {
         WatchUi.popView(WatchUi.SLIDE_IMMEDIATE);
         var menu = buildMainMenu();
@@ -219,7 +219,7 @@ class SettingsMenuBuilder {
     function refreshColorsMenu(currentSel as Array) {
         WatchUi.popView(WatchUi.SLIDE_IMMEDIATE);
         var menu = buildColorMenu(currentSel);
-        var dlg = new ColorsMenuDelegate(self, currentSel); // předej dál tempSel
+        var dlg = new ColorsMenuDelegate(self, currentSel);
         WatchUi.pushView(menu, dlg, WatchUi.SLIDE_IMMEDIATE);
     }
 }
@@ -236,7 +236,7 @@ class SettingsMenuDelegate extends WatchUi.MenuInputDelegate {
     }
 
     function onMenuItem(item) {
-        var startSel = model.getSelectedColors(); // aktuální uložené barvy
+        var startSel = model.getSelectedColors();
         if (item == SettingsIds.ID_COLOR) {
             WatchUi.pushView(builder.buildColorMenu(startSel), new ColorsMenuDelegate(builder, startSel), WatchUi.SLIDE_LEFT);
             return;
@@ -254,6 +254,10 @@ class SettingsMenuDelegate extends WatchUi.MenuInputDelegate {
             WatchUi.pushView(builder.buildTimeoutMenu(), new TimeoutMenuDelegate(builder), WatchUi.SLIDE_LEFT);
             return;
         }
+        if (item == SettingsIds.ID_DONATE) {
+            (new DonateHelper()).openBuyMeACoffee();
+            return;
+        }
         if (item == SettingsIds.ID_BACK) {
             WatchUi.popView(WatchUi.SLIDE_DOWN);
             return;
@@ -261,7 +265,7 @@ class SettingsMenuDelegate extends WatchUi.MenuInputDelegate {
     }
 
     function onBack() {
-        builder.refreshMainMenu();
+        WatchUi.popView(WatchUi.SLIDE_DOWN);
         return true;
     }
 }
@@ -269,33 +273,23 @@ class SettingsMenuDelegate extends WatchUi.MenuInputDelegate {
 class ColorsMenuDelegate extends WatchUi.MenuInputDelegate {
     private var builder;
     private var model;
-    private var tempSel; // dočasný výběr
+    private var tempSel;
 
     function initialize(b, initialSel as Array) {
         MenuInputDelegate.initialize();
         builder = b;
         model = new SettingsModel();
-        // Vytvoř kopii, aby se do ní klikalo, ale hned se neukládalo
+        // Create a copy so that changes can be clicked/selected without being saved immediately
         tempSel = [];
         for (var i = 0; i < initialSel.size(); i += 1) {
             tempSel.add(initialSel[i]);
         }
     }
 
-    // Pomocné funkce na práci s polem bez spolehání na Array.removeAt apod.
-    function indexOf(arr as Array, val as Number) as Number {
-        for (var i = 0; i < arr.size(); i += 1) {
-            if (arr[i] == val) {
-                return i;
-            }
-        }
-        return -1;
-    }
-
     function toggleInTemp(val as Number) {
-        var idx = indexOf(tempSel, val);
+        var idx = Utils.indexOfArray(tempSel, val);
         if (idx >= 0) {
-            // smazat
+            // remove
             var newArr = [];
             for (var i = 0; i < tempSel.size(); i += 1) {
                 if (i != idx) {
@@ -304,17 +298,16 @@ class ColorsMenuDelegate extends WatchUi.MenuInputDelegate {
             }
             tempSel = newArr;
         } else {
-            // přidat
+            // add
             tempSel.add(val);
         }
-        // Bezpečnost: nikdy nenech prázdné? – necháme volné, ale ošetříme při Uložit
     }
 
     function onMenuItem(item) {
-        // Uložit: potvrdit volby a vrátit se do hlavního menu
+        // Save: confirm selections and return to the main menu
         if (item == SettingsIds.ID_SAVE_COLORS) {
             if (tempSel.size() == 0) {
-                // vždy aspoň jedna barva, default white
+                // always at least one color, default is white
                 tempSel.add(Graphics.COLOR_WHITE);
             }
             model.setSelectedColors(tempSel);
@@ -322,13 +315,13 @@ class ColorsMenuDelegate extends WatchUi.MenuInputDelegate {
             return;
         }
 
-        // Zpět: zahodit změny (neukládat) a vrátit se
+        // Back: discard changes (do not save) and return
         if (item == SettingsIds.ID_BACK) {
             builder.refreshMainMenu();
             return;
         }
 
-        // Klik na barvu → přepnout v tempSel a refreshnout TOTO podmenu
+        // Click on a color → toggle in tempSel and refresh THIS submenu
         var ids = SettingsIds.COLOR_IDS;
         var n = model.colorValues.size();
         if (n > ids.size()) {
@@ -338,14 +331,13 @@ class ColorsMenuDelegate extends WatchUi.MenuInputDelegate {
         for (var i = 0; i < n; i += 1) {
             if (item == ids[i]) {
                 toggleInTemp(model.colorValues[i]);
-                builder.refreshColorsMenu(tempSel); // zůstaň v podmenu, ale překresli
+                builder.refreshColorsMenu(tempSel); // stay in the submenu, but redraw
                 return;
             }
         }
     }
 
     function onBack() {
-        // Back = stejně jako tlačítko Zpět (zahodit změny)
         builder.refreshMainMenu();
         return true;
     }
@@ -383,12 +375,11 @@ class TimeoutMenuDelegate extends WatchUi.MenuInputDelegate {
     }
 
     function onBack() {
-        builder.refreshMainMenu();
+        WatchUi.popView(WatchUi.SLIDE_RIGHT);
         return true;
     }
 }
 
-// ---------- Jednoduchý vstupní bod ----------
 class SettingsMenu {
     static function open() {
         var builder = new SettingsMenuBuilder();
@@ -399,7 +390,6 @@ class SettingsMenu {
 }
 
 class SettingsService {
-    // --- Pomoc: bezpečné čtení boolean/number s defaultem ---
     static function _getBool(key as String, def as Boolean) as Boolean {
         try {
             return Application.Properties.getValue(key);
@@ -424,7 +414,7 @@ class SettingsService {
         }
     }
 
-    // --- Bridge: booleany -> pole barev ---
+    // --- Bridge: booleans -> array of colors ---
     static function _composeSelectedColors() as Array {
         var res = [];
         if (_getBool("colorWhite", true)) {
@@ -436,14 +426,11 @@ class SettingsService {
         if (_getBool("colorRed", false)) {
             res.add(Graphics.COLOR_RED);
         }
-        // Bezpečnost: vždy aspoň 1 barva
         if (res.size() == 0) {
             res.add(Graphics.COLOR_WHITE);
         }
         return res;
     }
-
-    // --- Veřejné API (shodné s tím, co už voláš ve své app) ---
 
     static function getSelectedColors() as Array {
         return _composeSelectedColors();
@@ -462,9 +449,6 @@ class SettingsService {
         return _getNum("autoOffSec", 0);
     }
 
-    // --- Zápisy z on-device menu (udržuj stejné klíče jako v settings.xml) ---
-
-    // Přepnutí jedné barvy
     static function toggleColor(color as Number) {
         if (color == Graphics.COLOR_WHITE) {
             _set("colorWhite", !_getBool("colorWhite", true));
@@ -474,7 +458,6 @@ class SettingsService {
             _set("colorRed", !_getBool("colorRed", false));
         }
 
-        // Zajisti aspoň jednu zapnutou
         var arr = _composeSelectedColors();
         if (arr.size() == 0) {
             _set("colorWhite", true);
@@ -489,8 +472,8 @@ class SettingsService {
         _set("autoOffSec", sec);
     }
 
-    // Pokud si chceš udržovat cokoliv v cache, sem si to dej a volej z onSettingsChanged()
+    // If you want to keep anything in cache, put it here and call it from onSettingsChanged()
     static function refreshCacheFromProperties() {
-        // pro jednoduchost nic neděláme – čteme vždy přímo z Properties
+        // for simplicity we do nothing – always read directly from Properties
     }
 }

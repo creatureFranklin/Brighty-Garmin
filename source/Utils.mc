@@ -18,7 +18,6 @@ module Utils {
         return out;
     }
 
-    // Spojí libovolný počet polí za sebe a vrátí nové pole
     function concatenateArray(arrays as Array<Array>) as Array {
         var result = [];
 
@@ -32,5 +31,23 @@ module Utils {
         }
 
         return result;
+    }
+
+    function containsArray(arr as Array<Number>, value as Number) as Boolean {
+        for (var i = 0; i < arr.size(); i += 1) {
+            if (arr[i] == value) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function indexOfArray(arr as Array, val as Number) as Number {
+        for (var i = 0; i < arr.size(); i += 1) {
+            if (arr[i] == val) {
+                return i;
+            }
+        }
+        return -1;
     }
 }

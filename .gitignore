@@ -1,0 +1,23 @@
+# Build artifacts
+bin/
+*.prg
+
+# Eclipse / Connect IQ SDK workspace files
+.project
+.settings/
+.ciq/
+monkey.jungle
+
+# Logs
+*.log
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
+
+# Temporary files
+*.tmp
+*.bak

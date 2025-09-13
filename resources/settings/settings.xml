@@ -24,4 +24,9 @@
             <listEntry value="60">60 s</listEntry>
         </settingConfig>
     </setting>
+
+    <setting propertyKey="@Properties.donateInfo" title="@Strings.donateInfoTitle"
+        prompt="@Strings.donateInfoPrompt">
+        <settingConfig type="alphaNumeric" />
+    </setting>
 </settings>

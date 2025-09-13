@@ -6,7 +6,7 @@ using Toybox.Graphics;
 import Toybox.Lang;
 
 class FlashlightView extends WatchUi.View {
-    var _colors = Utils.concatenateArray([SettingsService.getSelectedColors(), [Graphics.COLOR_BLACK]]) as Array<Number>;
+    var _colors = prepareColors();
     var _color as Number;
     var _index as Number = 0;
     // var currentColor as Number;
@@ -21,10 +21,8 @@ class FlashlightView extends WatchUi.View {
     }
 
     function onShow() {
-        // znovu slož pole: vybrané barvy + černá
-        _colors = Utils.concatenateArray([SettingsService.getSelectedColors(), [Graphics.COLOR_BLACK]]) as Array<Number>;
+        _colors = prepareColors();
 
-        // drž index v rozsahu
         var last = _colors.size() - 1;
         if (_index > last) {
             _index = last;
@@ -33,7 +31,6 @@ class FlashlightView extends WatchUi.View {
             _index = 0;
         }
 
-        // synchronizuj _color s polem a rearmni timer
         setActiveColor(_index);
     }
 
@@ -103,12 +100,16 @@ class FlashlightView extends WatchUi.View {
         }
     }
 
+    function onBack() as Boolean {
+        return false;
+    }
+
     function setActiveColor(colorIndex as Number) as Void {
         _index = colorIndex;
         _color = _colors[_index];
         WatchUi.requestUpdate();
         if (_autoOff != null) {
-            _autoOff.rearm(_color); // na černé se timer nespustí
+            _autoOff.rearm(_color); // on black color stop timer
         }
     }
 
@@ -134,6 +135,29 @@ class FlashlightView extends WatchUi.View {
      */
     function openSettings() {
         SettingsMenu.open();
+    }
+
+    function prepareColors() as Array<Number> {
+        var settingColors = SettingsService.getSelectedColors();
+        var whiteShades = [0xbfbfbf, 0x808080];
+
+        var result = [] as Array<Number>;
+
+        for (var i = 0; i < settingColors.size(); i += 1) {
+            var col = settingColors[i];
+            result.add(col);
+
+            if (col == Graphics.COLOR_WHITE) {
+                // insert white shades after white color
+                for (var j = 0; j < whiteShades.size(); j += 1) {
+                    result.add(whiteShades[j]);
+                }
+            }
+        }
+
+        result.add(Graphics.COLOR_BLACK);
+
+        return result;
     }
 
     function contrastColor(bg as Number) as Number {

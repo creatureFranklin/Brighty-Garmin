@@ -14,7 +14,9 @@ class AutoOffController {
         _vibrateOnExp = vibrateOnExpire;
     }
 
-    /** Zastaví aktuální odpočet (pokud běží) */
+    /**
+     * Stop current timer
+     */
     function cancel() {
         if (_timer != null) {
             _timer.stop();
@@ -22,26 +24,28 @@ class AutoOffController {
     }
 
     /**
-     * Znovu ozbrojí timer podle SettingsService.getAutoOffSeconds();
-     * Když je currentColor černá, timer NESPUSTÍ.
+     * Rearms the timer according to SettingsService.getAutoOffSeconds();
+     * If the currentColor is black, the timer WILL NOT START.
      */
     function rearm(currentColor as Number) {
         cancel();
 
-        // Na černé barvě nikdy neodpočítáváme:
+        // Never count down on black color
         if (currentColor == Graphics.COLOR_BLACK) {
             return;
         }
 
         var sec = SettingsService.getAutoOffSeconds();
         if (sec <= 0) {
-            return; // auto-off vypnutý
+            return; // auto-off disabled
         }
 
         _timer.start(method(:_onExpire), sec * 1000, false);
     }
 
-    /** Interní callback po vypršení času */
+    /**
+     * Private callback after time expires
+     */
     function _onExpire() as Void {
         var colors = SettingsService.getSelectedColors();
 

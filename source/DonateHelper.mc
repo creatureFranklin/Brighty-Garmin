@@ -12,16 +12,13 @@ class BmcQrView extends WatchUi.View {
 
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
         dc.clear();
-
-        dc.drawText(w / 2, 16, Graphics.FONT_XTINY, Rez.Strings.supportMe, Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(w / 2, 16, Graphics.FONT_XTINY, Utils._t(Rez.Strings.supportMe), Graphics.TEXT_JUSTIFY_CENTER);
 
         var bmp = WatchUi.loadResource(Rez.Drawables.img_bmc_qr);
 
         var bw = bmp.getWidth();
         var bh = bmp.getHeight();
         dc.drawBitmap((w - bw) / 2, (h - bh) / 2, bmp);
-
-        dc.drawText(w / 2, h - 20, Graphics.FONT_XTINY, Rez.Strings.donateOpenTheCamera, Graphics.TEXT_JUSTIFY_CENTER);
     }
 }
 
@@ -40,9 +37,9 @@ class DonateHelper {
             // Open „Check your phone“ and run mobile browser
             Communications.openWebPage(BMC_URL, {}, {});
         } catch (e) {
-            // Fallback: Show QR code on watch display
-            WatchUi.pushView(new BmcQrView(), new WatchUi.InputDelegate(), WatchUi.SLIDE_LEFT);
+            _opening = false;
         } finally {
+            WatchUi.pushView(new BmcQrView(), new WatchUi.InputDelegate(), WatchUi.SLIDE_LEFT);
             _opening = false;
         }
     }

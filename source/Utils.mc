@@ -1,11 +1,15 @@
 using Toybox.Application as App;
 using Toybox.Graphics as Gfx;
 using Toybox.System;
+using Toybox.WatchUi;
 import Toybox.Attention;
-
 import Toybox.Lang;
 
 module Utils {
+    function _t(resource as Lang.ResourceId) {
+        return WatchUi.loadResource(resource);
+    }
+
     function min(a as Number, b as Number) {
         return a < b ? a : b;
     }
@@ -78,6 +82,27 @@ module Utils {
         if (failed) {
             try {
                 Attention.backlight(true); // turn on with default brightness
+            } catch (e) {
+                // If this fails too, ignore it → app must not crash
+            }
+        }
+    }
+
+    // Safe vypnutí podsvitu
+    function turnOffBacklight() as Void {
+        var failed = false;
+
+        // Try the "newer" method first (with brightness levels)
+        try {
+            Attention.backlight(0.0);
+        } catch (e) {
+            failed = true;
+        }
+
+        // If the first attempt failed → use the older method (just ON/OFF)
+        if (failed) {
+            try {
+                Attention.backlight(false);
             } catch (e) {
                 // If this fails too, ignore it → app must not crash
             }

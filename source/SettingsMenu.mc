@@ -22,8 +22,8 @@ class SettingsModel {
     public var colorLabels = ["White", "Green", "Red"];
     public var colorValues = [Graphics.COLOR_WHITE, Graphics.COLOR_GREEN, Graphics.COLOR_RED];
 
-    public var timeoutLabels = ["Never", "5 s", "10 s", "30 s", "60 s"];
-    public var timeoutValues = [0, 5, 10, 30, 60];
+    public var timeoutLabels = ["Never", "10 s", "30 s", "60 s", "120 s"];
+    public var timeoutValues = [0, 10, 30, 60, 120];
 
     // ---- Colors multiselect ----
     function getSelectedColors() {

@@ -1,5 +1,6 @@
 import Toybox.Lang;
 import Toybox.WatchUi;
+using Toybox.System;
 
 class BrightyDelegate extends WatchUi.InputDelegate {
     var _view;
@@ -16,5 +17,10 @@ class BrightyDelegate extends WatchUi.InputDelegate {
 
     function onTap(clickEvent as WatchUi.ClickEvent) as Boolean {
         return _view.onTap(clickEvent);
+    }
+
+    function onBack() as Boolean {
+        Utils.turnOffBacklight();
+        System.exit();
     }
 }

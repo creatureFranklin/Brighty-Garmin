@@ -58,7 +58,6 @@ class FlashlightView extends WatchUi.View {
 
         // 3) hints
         var showHintsFlag = SettingsService.getHintsEnabled();
-        System.println(UiUtils.isRound(dc));
         // On round displays
         var last = _colors.size() - 1;
         var canGoNext = _index > 0; // KEY_UP
@@ -110,23 +109,11 @@ class FlashlightView extends WatchUi.View {
             return true;
         }
 
-        return false;
-    }
-
-    // TODO: consider if it is good idea
-    // function onTap(clickEvent) {
-    //     System.println("on tap");
-    //     nextColor();
-    //     return true;
-    // }
-
-    function onHide() {
-        if (_autoOff != null) {
-            _autoOff.cancel();
+        if (key == WatchUi.KEY_ESC) {
+            Utils.turnOffBacklight();
+            System.exit();
         }
-    }
 
-    function onBack() as Boolean {
         return false;
     }
 
@@ -141,6 +128,17 @@ class FlashlightView extends WatchUi.View {
         }
 
         return true;
+    }
+
+    function onHide() {
+        Utils.turnOffBacklight();
+        if (_autoOff != null) {
+            _autoOff.cancel();
+        }
+    }
+
+    function onBack() as Boolean {
+        return false;
     }
 
     function setActiveColor(colorIndex as Number) as Void {

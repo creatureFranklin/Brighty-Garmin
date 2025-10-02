@@ -47,6 +47,7 @@ Every coffee helps me keep improving Brighty for the community ❤️
 ## 📋 TODO
 
 -   [ ] Add **SOS signal mode** (blinking light pattern)
+-   [ ] Extend support for **Garmin Edge devices**
 -   [ ] Improve **compatibility handling** for monochrome-only devices
 
 ---

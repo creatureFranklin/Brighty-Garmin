@@ -55,7 +55,7 @@ class AutoOffController {
 
         if (_vibrateOnExp) {
             try {
-                Attention.vibrate([new Attention.VibeProfile(50, 2000)]);
+                Attention.vibrate([new Attention.VibeProfile(50, 1000)]);
             } catch (e) {}
         }
     }

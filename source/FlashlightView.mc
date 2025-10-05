@@ -110,7 +110,7 @@ class FlashlightView extends WatchUi.View {
         }
 
         if (key == WatchUi.KEY_ESC) {
-            Utils.turnOffBacklight();
+            Utils.turnOnBacklight(1.0, 0);
             System.exit();
         }
 
@@ -131,7 +131,6 @@ class FlashlightView extends WatchUi.View {
     }
 
     function onHide() {
-        Utils.turnOffBacklight();
         if (_autoOff != null) {
             _autoOff.cancel();
         }

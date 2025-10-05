@@ -87,25 +87,4 @@ module Utils {
             }
         }
     }
-
-    // Safe vypnutí podsvitu
-    function turnOffBacklight() as Void {
-        var failed = false;
-
-        // Try the "newer" method first (with brightness levels)
-        try {
-            Attention.backlight(0.0);
-        } catch (e) {
-            failed = true;
-        }
-
-        // If the first attempt failed → use the older method (just ON/OFF)
-        if (failed) {
-            try {
-                Attention.backlight(false);
-            } catch (e) {
-                // If this fails too, ignore it → app must not crash
-            }
-        }
-    }
 }

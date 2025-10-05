@@ -20,7 +20,7 @@ class BrightyDelegate extends WatchUi.InputDelegate {
     }
 
     function onBack() as Boolean {
-        Utils.turnOffBacklight();
+        Utils.turnOnBacklight(1.0, 0);
         System.exit();
     }
 }

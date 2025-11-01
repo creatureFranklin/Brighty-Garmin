@@ -1,6 +1,18 @@
 <drawables xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
     <bitmap id="LauncherIcon" filename="launcher_icon.svg" dithering="none" />
+   <bitmap
+        id="img_bmc_qr_096" filename="bmc_qr_96.png" />
+    <bitmap id="img_bmc_qr_112"
+        filename="bmc_qr_112.png" />
+    <bitmap id="img_bmc_qr_128" filename="bmc_qr_128.png" />
     <bitmap
-        id="img_bmc_qr" filename="bmc_qr.png" />
+        id="img_bmc_qr_144" filename="bmc_qr_144.png" />
+    <bitmap id="img_bmc_qr_160"
+        filename="bmc_qr_160.png" />
+    <bitmap id="img_bmc_qr_176" filename="bmc_qr_176.png" />
+    <bitmap
+        id="img_bmc_qr_192" filename="bmc_qr_192.png" />
+    <bitmap id="img_bmc_qr_256"
+        filename="bmc_qr_256.png" />
 </drawables>

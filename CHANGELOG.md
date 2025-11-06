@@ -9,11 +9,11 @@ This project follows [Semantic Versioning](https://semver.org/).
 
 ### Added
 
--   N/A
+-   add new orange and yellow colors for flashlight
 
 ### Changed
 
--   N/A
+-   removed dependency on communication permission
 
 ### Fixed
 

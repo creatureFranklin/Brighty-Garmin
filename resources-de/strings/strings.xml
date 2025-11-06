@@ -34,7 +34,18 @@
     <string
         id="colorRed">Farbe: Rot</string>
     <string id="colorGreen">Farbe: Grün</string>
-    <string id="showHints">Hinweise anzeigen</string>
+    <string
+        id="colorOrange">Farbe: Orange (Auf 8-farbigen Modellen (z. B. FR55) wird es gelb angezeigt)</string>
+    <string
+        id="colorYellow">Farbe: Gelb</string>
+        <string id="white">Weiß</string>
+    <string id="red">Rot</string>
+    <string
+        id="green">Grün</string>
+    <string id="orange">Orange</string>
+    <string id="yellow">Gelb</string>
+    <string
+        id="showHints">Hinweise anzeigen</string>
     <string
         id="autoOff">Autom. Ausschalten</string>
 

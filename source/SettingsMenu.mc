@@ -6,7 +6,7 @@ using Toybox.System;
 
 // ---------- Fixed item IDs (Symbol) ----------
 class SettingsIds {
-    public static const COLOR_IDS = [:color0, :color1, :color2, :color3, :color4, :color5];
+    public static const COLOR_IDS = [:color0, :color1, :color2, :color3, :color4, :color5, :color6, :color7];
     public static const TIMEOUT_IDS = [:timeout0, :timeout1, :timeout2, :timeout3, :timeout4, :timeout5, :timeout6];
 
     public static const ID_COLOR = :color; // main menu → color submenu (multiselect)
@@ -19,11 +19,13 @@ class SettingsIds {
 }
 
 class SettingsModel {
-    public var colorLabels = ["White", "Green", "Red"];
-    public var colorValues = [Graphics.COLOR_WHITE, Graphics.COLOR_GREEN, Graphics.COLOR_RED];
+    public var colorLabels as Array<String> =
+        [Utils._t(Rez.Strings.white), Utils._t(Rez.Strings.green), Utils._t(Rez.Strings.red), Utils._t(Rez.Strings.orange), Utils._t(Rez.Strings.yellow)] as Array<String>;
+    public var colorValues as Array<Number> = [Graphics.COLOR_WHITE, Graphics.COLOR_GREEN, Graphics.COLOR_RED, Graphics.COLOR_ORANGE, Graphics.COLOR_YELLOW] as Array<Number>;
 
-    public var timeoutLabels = ["Never", "10 s", "30 s", "60 s", "120 s"];
-    public var timeoutValues = [0, 10, 30, 60, 120];
+    public var timeoutLabels as Array<String> =
+        [Utils._t(Rez.Strings.autoOffNever), Utils._t(Rez.Strings.autoOff10), Utils._t(Rez.Strings.autoOff30), Utils._t(Rez.Strings.autoOff60), Utils._t(Rez.Strings.autoOff120)] as Array<String>;
+    public var timeoutValues as Array<Number> = [0, 10, 30, 60, 120] as Array<Number>;
 
     // ---- Colors multiselect ----
     function getSelectedColors() {
@@ -35,7 +37,7 @@ class SettingsModel {
     }
 
     function isColorSelected(val as Number) {
-        var sel = getSelectedColors();
+        var sel = getSelectedColors() as Array<Number>;
         for (var i = 0; i < sel.size(); i += 1) {
             if (sel[i] == val) {
                 return true;
@@ -62,11 +64,10 @@ class SettingsModel {
     }
 
     function colorsSummaryLabel() as String {
-        var sel = getSelectedColors();
+        var sel = getSelectedColors() as Array<Number>;
         var names = [] as Array<String>;
-
         for (var i = 0; i < colorValues.size(); i += 1) {
-            var cv = colorValues[i];
+            var cv = colorValues[i] as Number;
 
             var picked = false;
             for (var j = 0; j < sel.size(); j += 1) {
@@ -85,7 +86,7 @@ class SettingsModel {
             return "—";
         }
         if (n <= 2) {
-            return Utils.joinArray(names, ", ");
+            return Utils.joinArray(names as Array, ", ");
         }
 
         return names[0] + ", " + names[1] + " +" + (n - 2).toString();
@@ -93,9 +94,10 @@ class SettingsModel {
 
     function getColor() {
         // returns first color from all selected colors
-        var sel = getSelectedColors();
+        var sel = getSelectedColors() as Array<Number>;
         return sel.size() > 0 ? sel[0] : Graphics.COLOR_WHITE;
     }
+
     function setColor(c) {
         setSelectedColors([c]);
     }
@@ -114,15 +116,6 @@ class SettingsModel {
 
     function setAutoOff(sec) {
         SettingsService.setAutoOffSeconds(sec);
-    }
-
-    function indexOfValue(arr, value) {
-        for (var i = 0; i < arr.size(); i += 1) {
-            if (arr[i] == value) {
-                return i;
-            }
-        }
-        return 0;
     }
 }
 
@@ -144,7 +137,10 @@ class SettingsMenuBuilder {
         var hintsRes = model.getHints() ? "On" : "Off";
         m.addItem(new WatchUi.MenuItem(Rez.Strings.hints, hintsRes, SettingsIds.ID_HINTS, null));
 
-        var tIdx = model.indexOfValue(model.timeoutValues, model.getAutoOff());
+        var tIdx = Utils.indexOfArray(model.timeoutValues, model.getAutoOff());
+        if (tIdx < 0) {
+            tIdx = 0;
+        }
         var timeoutLabel = model.timeoutLabels[tIdx];
         m.addItem(new WatchUi.MenuItem(Rez.Strings.autoOff, timeoutLabel, SettingsIds.ID_TIMEOUT, null));
 
@@ -163,16 +159,18 @@ class SettingsMenuBuilder {
 
         for (var i = 0; i < n; i += 1) {
             var val = model.colorValues[i];
-            var picked = false;
-            for (var j = 0; j < currentSel.size(); j += 1) {
-                if (currentSel[j] == val) {
-                    picked = true;
-                    break;
+            if (UtilsColorCompat.isLowColorDevice() && val != Graphics.COLOR_ORANGE) {
+                var picked = false;
+                for (var j = 0; j < currentSel.size(); j += 1) {
+                    if (currentSel[j] == val) {
+                        picked = true;
+                        break;
+                    }
                 }
-            }
 
-            var mark = picked ? "[x]" : "[ ]";
-            m.addItem(new WatchUi.MenuItem(mark + " " + model.colorLabels[i], null, SettingsIds.COLOR_IDS[i], null));
+                var mark = picked ? "[x]" : "[ ]";
+                m.addItem(new WatchUi.MenuItem(mark + " " + model.colorLabels[i], null, SettingsIds.COLOR_IDS[i], null));
+            }
         }
 
         m.addItem(new WatchUi.MenuItem(Rez.Strings.save, null, SettingsIds.ID_SAVE_COLORS, null));
@@ -415,15 +413,25 @@ class SettingsService {
         }
     }
 
+    // Helper: add only unique color
+    static function _addMapped(result as Array<Number>, c as Number, isLow as Boolean) as Void {
+        var mapped = isLow ? UtilsColorCompat.to8Color(c) : c;
+        if (!Utils.containsArray(result as Array, mapped)) {
+            result.add(mapped);
+        }
+    }
+
     static function _composeSelectedColors() as Array<Number> {
         var options = [
             { :key => "colorWhite", :def => true, :color => Graphics.COLOR_WHITE },
             { :key => "colorGreen", :def => false, :color => Graphics.COLOR_GREEN },
             { :key => "colorRed", :def => false, :color => Graphics.COLOR_RED },
+            { :key => "colorOrange", :def => false, :color => Graphics.COLOR_ORANGE },
+            { :key => "colorYellow", :def => false, :color => Graphics.COLOR_YELLOW },
         ];
 
+        // 1) Load selected baseColors in defined order
         var baseColors = [] as Array<Number>;
-
         for (var i = 0; i < options.size(); i += 1) {
             var opt = options[i];
             if (_getBool(opt[:key], opt[:def])) {
@@ -435,32 +443,54 @@ class SettingsService {
             baseColors.add(Graphics.COLOR_WHITE);
         }
 
+        var isLow = UtilsColorCompat.isLowColorDevice();
         var result = [] as Array<Number>;
-        var whiteShades = [0xbfbfbf, 0x808080];
 
+        // 2) White -> and after that whiteShades
+        var idxWhite = -1;
         for (var i = 0; i < baseColors.size(); i += 1) {
-            var col = baseColors[i];
-            result.add(col);
-            if (col == Graphics.COLOR_WHITE) {
-                for (var j = 0; j < whiteShades.size(); j += 1) {
-                    result.add(whiteShades[j]);
+            if (baseColors[i] == Graphics.COLOR_WHITE) {
+                idxWhite = i;
+                break;
+            }
+        }
+
+        if (idxWhite >= 0) {
+            _addMapped(result, Graphics.COLOR_WHITE, isLow);
+
+            // whiteShades after white
+            if (!isLow) {
+                var whiteShades = [0xbfbfbf, 0x808080] as Array<Number>;
+                for (var ws = 0; ws < whiteShades.size(); ws += 1) {
+                    _addMapped(result, whiteShades[ws], isLow);
                 }
             }
         }
 
-        result.add(Graphics.COLOR_BLACK);
+        // 3) Other baseColors
+        for (var j = 0; j < baseColors.size(); j += 1) {
+            if (j == idxWhite) {
+                continue;
+            }
+            _addMapped(result, baseColors[j], isLow); // ORANGE→YELLOW on FR55
+        }
+
+        // 4) Black as last color in order
+        _addMapped(result, Graphics.COLOR_BLACK, isLow);
 
         return result;
     }
 
-    static function getSelectedColors() as Array {
+    static function getSelectedColors() as Array<Number> {
         return _composeSelectedColors();
     }
 
-    static function setSelectedColorsList(list as Array<Number>) {
+    static function setSelectedColorsList(list as Array<Number>?) {
         var hasW = false,
             hasG = false,
-            hasR = false;
+            hasR = false,
+            hasO = false,
+            hasY = false;
         if (list != null) {
             var n = list.size();
             for (var i = 0; i < n; i += 1) {
@@ -475,17 +505,27 @@ class SettingsService {
                 }
                 if (c == Graphics.COLOR_RED) {
                     hasR = true;
+                    continue;
+                }
+                if (c == Graphics.COLOR_ORANGE) {
+                    hasO = true;
+                    continue;
+                }
+                if (c == Graphics.COLOR_YELLOW) {
+                    hasY = true;
                 }
             }
         }
 
-        if (!hasW && !hasG && !hasR) {
+        if (!hasW && !hasG && !hasR && !hasO && !hasY) {
             hasW = true;
         }
 
         var curW = _getBool("colorWhite", true);
         var curG = _getBool("colorGreen", false);
         var curR = _getBool("colorRed", false);
+        var curO = _getBool("colorOrange", false);
+        var curY = _getBool("colorYellow", false);
 
         if (curW != hasW) {
             _set("colorWhite", hasW);
@@ -495,6 +535,12 @@ class SettingsService {
         }
         if (curR != hasR) {
             _set("colorRed", hasR);
+        }
+        if (curO != hasO) {
+            _set("colorOrange", hasO);
+        }
+        if (curY != hasY) {
+            _set("colorYellow", hasY);
         }
     }
 
@@ -518,6 +564,10 @@ class SettingsService {
             _set("colorGreen", !_getBool("colorGreen", false));
         } else if (color == Graphics.COLOR_RED) {
             _set("colorRed", !_getBool("colorRed", false));
+        } else if (color == Graphics.COLOR_ORANGE) {
+            _set("colorOrange", !_getBool("colorOrange", false));
+        } else if (color == Graphics.COLOR_YELLOW) {
+            _set("colorYellow", !_getBool("colorYellow", false));
         }
 
         var arr = _composeSelectedColors();

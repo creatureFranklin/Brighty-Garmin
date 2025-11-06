@@ -2,6 +2,8 @@
     <property id="colorWhite" type="boolean">true</property>
     <property id="colorRed" type="boolean">true</property>
     <property id="colorGreen" type="boolean">false</property>
+    <property id="colorOrange" type="boolean">false</property>
+    <property id="colorYellow" type="boolean">false</property>
 
     <property id="showHints" type="boolean">true</property>
 

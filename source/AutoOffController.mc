@@ -4,7 +4,7 @@ using Toybox.Graphics;
 import Toybox.Lang;
 
 class AutoOffController {
-    private var _timer as Timer.Timer;
+    private var _timer as Timer.Timer?;
     private var _applyColor as Method; // (Number color) => void
     private var _vibrateOnExp as Boolean;
 

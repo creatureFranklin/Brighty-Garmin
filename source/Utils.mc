@@ -14,8 +14,12 @@ module Utils {
         return a < b ? a : b;
     }
 
-    function joinArray(arr as Array, sep as Lang.String) {
+    function joinArray(arr as Array?, sep as Lang.String) as String {
         var out = "";
+        if (arr == null) {
+            return out;
+        }
+
         for (var i = 0; i < arr.size(); i += 1) {
             if (i > 0) {
                 out += sep;
@@ -25,8 +29,12 @@ module Utils {
         return out;
     }
 
-    function concatenateArray(arrays as Array<Array>) as Array {
-        var result = [];
+    function concatenateArray(arrays as Array<Array?>?) as Array {
+        var result = [] as Array;
+
+        if (arrays == null) {
+            return result;
+        }
 
         for (var i = 0; i < arrays.size(); i += 1) {
             var arr = arrays[i];
@@ -40,7 +48,10 @@ module Utils {
         return result;
     }
 
-    function containsArray(arr as Array<Number>, value as Number) as Boolean {
+    function containsArray(arr as Array?, value as Number) as Boolean {
+        if (arr == null) {
+            return false;
+        }
         for (var i = 0; i < arr.size(); i += 1) {
             if (arr[i] == value) {
                 return true;
@@ -49,9 +60,13 @@ module Utils {
         return false;
     }
 
-    function indexOfArray(arr as Array, val as Number) as Number {
+    function indexOfArray(arr as Array?, value as Number) as Number {
+        if (arr == null) {
+            return -1;
+        }
         for (var i = 0; i < arr.size(); i += 1) {
-            if (arr[i] == val) {
+            var v = arr[i];
+            if (v == value) {
                 return i;
             }
         }

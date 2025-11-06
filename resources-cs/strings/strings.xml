@@ -34,7 +34,18 @@
     <string
         id="colorRed">Barva: Červená</string>
     <string id="colorGreen">Barva: Zelená</string>
-    <string id="showHints">Zobrazovat hinty</string>
+    <string
+        id="colorOrange">Barva: Oranžová (Na 8-barevných modelech (např. FR55) se zobrazí jako žlutá)</string>
+    <string
+        id="colorYellow">Barva: Žlutá</string>
+        <string id="white">Bílá</string>
+    <string id="red">Červená</string>
+    <string
+        id="green">Zelená</string>
+    <string id="orange">Oranžová</string>
+    <string id="yellow">Žlutá</string>
+    <string
+        id="showHints">Zobrazovat hinty</string>
     <string
         id="autoOff">Auto-vypnutí</string>
 

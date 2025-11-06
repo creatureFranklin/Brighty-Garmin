@@ -35,7 +35,18 @@
     <string id="colorRed">Color: Red</string>
     <string
         id="colorGreen">Color: Green</string>
-    <string id="showHints">Show hints</string>
+    <string
+        id="colorOrange">Color: Orange (On 8-color models (e.g., FR55), it will appear as yellow)</string>
+    <string
+        id="colorYellow">Color: Yellow</string>
+    <string id="white">White</string>
+    <string id="red">Red</string>
+    <string
+        id="green">Green</string>
+    <string id="orange">Orange</string>
+    <string id="yellow">Yellow</string>
+    <string
+        id="showHints">Show hints</string>
     <string id="autoOff">Auto-off</string>
 
     <string

@@ -6,13 +6,13 @@ using Toybox.Graphics;
 import Toybox.Lang;
 
 class FlashlightView extends WatchUi.View {
-    var _colors = prepareColors();
+    var _colors as Array<Number> = prepareColors();
     var _color as Number;
     var _index as Number = 0;
 
     var _deviceHeight as Number = 0;
     var _deviceWidth as Number = 0;
-    var _autoOff as AutoOffController;
+    var _autoOff as AutoOffController?;
 
     function initialize() {
         View.initialize();

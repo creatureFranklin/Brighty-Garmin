@@ -11,6 +11,14 @@
         <settingConfig type="boolean" />
     </setting>
 
+    <setting propertyKey="@Properties.colorOrange" title="@Strings.colorOrange">
+        <settingConfig type="boolean" />
+    </setting>
+
+    <setting propertyKey="@Properties.colorYellow" title="@Strings.colorYellow">
+        <settingConfig type="boolean" />
+    </setting>
+
     <setting propertyKey="@Properties.showHints" title="@Strings.showHints">
         <settingConfig type="boolean" />
     </setting>

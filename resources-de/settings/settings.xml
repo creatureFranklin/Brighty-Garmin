@@ -1,4 +1,5 @@
 <settings>
+    <!-- === COLORS === -->
     <setting propertyKey="@Properties.colorWhite" title="@Strings.colorWhite">
         <settingConfig type="boolean" />
     </setting>
@@ -19,20 +20,32 @@
         <settingConfig type="boolean" />
     </setting>
 
+    <!-- === HINTS === -->
     <setting propertyKey="@Properties.showHints" title="@Strings.showHints">
         <settingConfig type="boolean" />
     </setting>
 
+    <!-- === AUTO-OFF === -->
     <setting propertyKey="@Properties.autoOffSec" title="@Strings.autoOff">
         <settingConfig type="list">
             <listEntry value="0">@Strings.autoOffNever</listEntry>
+            <listEntry value="5">@Strings.autoOff5</listEntry>
             <listEntry value="10">@Strings.autoOff10</listEntry>
             <listEntry value="30">@Strings.autoOff30</listEntry>
             <listEntry value="60">@Strings.autoOff60</listEntry>
-            <listEntry value="120">@Strings.autoOff120</listEntry>
         </settingConfig>
     </setting>
 
+    <!-- === BACKLIGHT === -->
+    <setting propertyKey="@Properties.allowBacklight" title="@Strings.allowBacklight">
+        <settingConfig type="boolean" />
+    </setting>
+
+    <setting propertyKey="@Properties.backlightKeepAlive" title="@Strings.backlightKeepAlive">
+        <settingConfig type="boolean" />
+    </setting>
+
+    <!-- === DONATE INFO === -->
     <setting propertyKey="@Properties.donateInfo"
         title="@Strings.donateInfoTitle"
         prompt="@Strings.donateInfoPrompt">

@@ -13,6 +13,10 @@ class SettingsIds {
     public static const ID_SAVE_COLORS = :save; // main menu → color submenu "Save"
     public static const ID_HINTS = :hints; // main menu toggle
     public static const ID_TIMEOUT = :timeout; // main menu → timeout submenu
+    public static const ID_BACKLIGHT = :backlight; // main menu → backlight submenu
+    public static const ID_BACKLIGHT_ALLOW = :blAllow; // main menu → backlight submenu → backlight allow toggle
+    public static const ID_BACKLIGHT_KEEPALIVE = :blKeepAlive; // main menu → backlight submenu → backlight keepalive toggle
+
     public static const ID_BACK = :back; // universal "Back"
 
     public static const ID_DONATE = :donate;
@@ -21,10 +25,12 @@ class SettingsIds {
 class SettingsModel {
     public var colorLabels as Array<String> =
         [Utils._t(Rez.Strings.white), Utils._t(Rez.Strings.green), Utils._t(Rez.Strings.red), Utils._t(Rez.Strings.orange), Utils._t(Rez.Strings.yellow)] as Array<String>;
+
     public var colorValues as Array<Number> = [Graphics.COLOR_WHITE, Graphics.COLOR_GREEN, Graphics.COLOR_RED, Graphics.COLOR_ORANGE, Graphics.COLOR_YELLOW] as Array<Number>;
 
     public var timeoutLabels as Array<String> =
         [Utils._t(Rez.Strings.autoOffNever), Utils._t(Rez.Strings.autoOff10), Utils._t(Rez.Strings.autoOff30), Utils._t(Rez.Strings.autoOff60), Utils._t(Rez.Strings.autoOff120)] as Array<String>;
+
     public var timeoutValues as Array<Number> = [0, 10, 30, 60, 120] as Array<Number>;
 
     // ---- Colors multiselect ----
@@ -117,6 +123,23 @@ class SettingsModel {
     function setAutoOff(sec) {
         SettingsService.setAutoOffSeconds(sec);
     }
+
+    // === Backlight props ===
+    function getAllowBacklight() {
+        return SettingsService.getAllowBacklight();
+    }
+
+    function setAllowBacklight(on as Boolean) as Void {
+        SettingsService.setAllowBacklight(on);
+    }
+
+    function getBacklightKeepAlive() {
+        return SettingsService.getBacklightKeepAlive();
+    }
+
+    function setBacklightKeepAlive(on as Boolean) as Void {
+        SettingsService.setBacklightKeepAlive(on);
+    }
 }
 
 // ---------- Builder menu ----------
@@ -134,7 +157,7 @@ class SettingsMenuBuilder {
 
         m.addItem(new WatchUi.MenuItem(Rez.Strings.colors, model.colorsSummaryLabel() as String, SettingsIds.ID_COLOR, null));
 
-        var hintsRes = model.getHints() ? "On" : "Off";
+        var hintsRes = model.getHints() ? Utils._t(Rez.Strings.on) : Utils._t(Rez.Strings.off);
         m.addItem(new WatchUi.MenuItem(Rez.Strings.hints, hintsRes, SettingsIds.ID_HINTS, null));
 
         var tIdx = Utils.indexOfArray(model.timeoutValues, model.getAutoOff());
@@ -143,6 +166,8 @@ class SettingsMenuBuilder {
         }
         var timeoutLabel = model.timeoutLabels[tIdx];
         m.addItem(new WatchUi.MenuItem(Rez.Strings.autoOff, timeoutLabel, SettingsIds.ID_TIMEOUT, null));
+
+        m.addItem(new WatchUi.MenuItem(Rez.Strings.backlight, null, SettingsIds.ID_BACKLIGHT, null));
 
         m.addItem(new WatchUi.MenuItem(Rez.Strings.supportMe, null, SettingsIds.ID_DONATE, null));
 
@@ -198,6 +223,20 @@ class SettingsMenuBuilder {
         return m;
     }
 
+    function buildBacklightMenu() as WatchUi.Menu2 {
+        var m = new WatchUi.Menu2({ :title => Rez.Strings.backlight });
+        // Toggle: Allow backlight
+        var allowTxt = model.getAllowBacklight() ? Utils._t(Rez.Strings.on) : Utils._t(Rez.Strings.off);
+        m.addItem(new WatchUi.MenuItem(Rez.Strings.allowBacklight, allowTxt, SettingsIds.ID_BACKLIGHT_ALLOW, null));
+
+        // Toggle: Keep-alive
+        var kaTxt = model.getBacklightKeepAlive() ? Utils._t(Rez.Strings.on) : Utils._t(Rez.Strings.off);
+        m.addItem(new WatchUi.MenuItem(Rez.Strings.backlightKeepAlive, kaTxt, SettingsIds.ID_BACKLIGHT_KEEPALIVE, null));
+
+        m.addItem(new WatchUi.MenuItem(Rez.Strings.back, null, SettingsIds.ID_BACK, null));
+        return m;
+    }
+
     function refreshMainMenu() {
         WatchUi.popView(WatchUi.SLIDE_IMMEDIATE);
         var mainView = new FlashlightView();
@@ -209,6 +248,13 @@ class SettingsMenuBuilder {
         WatchUi.popView(WatchUi.SLIDE_IMMEDIATE);
         var menu = buildColorMenu(currentSel);
         var dlg = new ColorsMenuDelegate(self, currentSel);
+        WatchUi.pushView(menu, dlg, WatchUi.SLIDE_IMMEDIATE);
+    }
+
+    function refreshBacklightMenu() {
+        WatchUi.popView(WatchUi.SLIDE_IMMEDIATE);
+        var menu = buildBacklightMenu();
+        var dlg = new BacklightMenuDelegate(self);
         WatchUi.pushView(menu, dlg, WatchUi.SLIDE_IMMEDIATE);
     }
 }
@@ -245,6 +291,11 @@ class SettingsMenuDelegate extends WatchUi.Menu2InputDelegate {
 
         if (id == SettingsIds.ID_TIMEOUT) {
             WatchUi.pushView(builder.buildTimeoutMenu(), new TimeoutMenuDelegate(builder), WatchUi.SLIDE_LEFT);
+            return;
+        }
+
+        if (id == SettingsIds.ID_BACKLIGHT) {
+            WatchUi.pushView(builder.buildBacklightMenu(), new BacklightMenuDelegate(builder), WatchUi.SLIDE_LEFT);
             return;
         }
 
@@ -379,6 +430,47 @@ class TimeoutMenuDelegate extends WatchUi.Menu2InputDelegate {
         return;
     }
 }
+
+class BacklightMenuDelegate extends WatchUi.Menu2InputDelegate {
+    private var builder;
+    private var model;
+
+    function initialize(b) {
+        Menu2InputDelegate.initialize();
+        builder = b;
+        model = new SettingsModel();
+    }
+
+    function onSelect(item as WatchUi.MenuItem) as Void {
+        var id = item.getId();
+
+        // Toggle: Allow
+        if (id == SettingsIds.ID_BACKLIGHT_ALLOW) {
+            model.setAllowBacklight(!model.getAllowBacklight());
+            builder.refreshBacklightMenu();
+            return;
+        }
+
+        // Toggle: KeepAlive
+        if (id == SettingsIds.ID_BACKLIGHT_KEEPALIVE) {
+            model.setBacklightKeepAlive(!model.getBacklightKeepAlive());
+            builder.refreshBacklightMenu();
+            return;
+        }
+
+        // Back
+        if (id == SettingsIds.ID_BACK) {
+            builder.refreshMainMenu();
+            return;
+        }
+    }
+
+    function onBack() {
+        builder.refreshMainMenu();
+        return;
+    }
+}
+
 class SettingsMenu {
     static function open() {
         var builder = new SettingsMenuBuilder();
@@ -582,6 +674,23 @@ class SettingsService {
 
     static function setAutoOffSeconds(sec as Number) {
         _set("autoOffSec", sec);
+    }
+
+    // === Backlight props ===
+    static function getAllowBacklight() as Boolean {
+        return _getBool("allowBacklight", true);
+    }
+
+    static function setAllowBacklight(on as Boolean) as Void {
+        _set("allowBacklight", on);
+    }
+
+    static function getBacklightKeepAlive() as Boolean {
+        return _getBool("backlightKeepAlive", false);
+    }
+
+    static function setBacklightKeepAlive(on as Boolean) as Void {
+        _set("backlightKeepAlive", on);
     }
 
     // If you want to keep anything in cache, put it here and call it from onSettingsChanged()

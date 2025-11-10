@@ -1,6 +1,7 @@
 import Toybox.Lang;
 import Toybox.WatchUi;
 using Toybox.System;
+using Toybox.Application as App;
 
 class BrightyDelegate extends WatchUi.InputDelegate {
     var _view;

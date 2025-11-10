@@ -56,4 +56,8 @@
     <string id="autoOff60">60 s</string>
     <string
         id="autoOff120">120 s</string>
+    <string id="backlight">Podsvit</string>
+    <string id="allowBacklight">Zapínat podsvit</string>
+    <string
+        id="backlightKeepAlive">Udržovat jas na max</string>
 </strings>

@@ -9,5 +9,8 @@
 
     <property id="autoOffSec" type="number">0</property>
 
+    <property id="allowBacklight" type="boolean">true</property>
+    <property id="backlightKeepAlive" type="boolean">false</property>
+
     <property id="donateInfo" type="string">buymeacoffee.com/reminektomq</property>
 </properties>

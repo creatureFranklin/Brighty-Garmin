@@ -10,6 +10,7 @@ This project follows [Semantic Versioning](https://semver.org/).
 ### Added
 
 -   add new orange and yellow colors for flashlight
+-   add backlight on setting
 
 ### Changed
 

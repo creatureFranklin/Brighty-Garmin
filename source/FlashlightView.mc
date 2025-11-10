@@ -14,17 +14,26 @@ class FlashlightView extends WatchUi.View {
     var _deviceWidth as Number = 0;
     var _autoOff as AutoOffController?;
 
+    var _backlightKA as BacklightKeepAlive?;
+
+    var _isViewVisible as Boolean = false;
+
     function initialize() {
         View.initialize();
         _color = _colors[_index];
 
-        Utils.turnOnBacklight(1.0, 2);
+        if (SettingsService.getAllowBacklight()) {
+            Utils.turnOnBacklight(1.0, 2);
+        }
+
+        _backlightKA = new BacklightKeepAlive();
 
         _autoOff = new AutoOffController(method(:setActiveColor), /*vibrateOnExpire=*/ true);
         _autoOff.rearm(_color);
     }
 
     function onShow() {
+        _isViewVisible = true;
         _colors = prepareColors();
 
         var last = _colors.size() - 1;
@@ -36,6 +45,16 @@ class FlashlightView extends WatchUi.View {
         }
 
         setActiveColor(_index);
+    }
+
+    function onHide() {
+        _isViewVisible = false;
+        if (_autoOff != null) {
+            _autoOff.cancel();
+        }
+        if (_backlightKA != null) {
+            _backlightKA.stop();
+        }
     }
 
     function onUpdate(dc as Graphics.Dc) {
@@ -110,6 +129,9 @@ class FlashlightView extends WatchUi.View {
         }
 
         if (key == WatchUi.KEY_ESC) {
+            if (_backlightKA != null) {
+                _backlightKA.stop();
+            }
             Utils.turnOnBacklight(1.0, 0);
             System.exit();
         }
@@ -130,12 +152,6 @@ class FlashlightView extends WatchUi.View {
         return true;
     }
 
-    function onHide() {
-        if (_autoOff != null) {
-            _autoOff.cancel();
-        }
-    }
-
     function onBack() as Boolean {
         return false;
     }
@@ -147,6 +163,32 @@ class FlashlightView extends WatchUi.View {
         if (_autoOff != null) {
             _autoOff.rearm(_color); // on black color stop timer
         }
+
+        if (_isFlashlightOn()) {
+            if (SettingsService.getAllowBacklight()) {
+                Utils.turnOnBacklight(1.0, 2); // priming shot
+            }
+            if (SettingsService.getAllowBacklight() && SettingsService.getBacklightKeepAlive()) {
+                if (_backlightKA == null) {
+                    _backlightKA = new BacklightKeepAlive();
+                }
+                _backlightKA.start();
+            } else if (_backlightKA != null) {
+                _backlightKA.stop();
+            }
+        } else {
+            if (_backlightKA != null) {
+                _backlightKA.stop();
+            }
+        }
+    }
+
+    public function resyncBacklightKA() as Void {
+        // If view is not active / not vissible (for example opened settings)
+        if (!_isViewVisible) {
+            return;
+        }
+        setActiveColor(_index);
     }
 
     function nextColor() {
@@ -190,5 +232,9 @@ class FlashlightView extends WatchUi.View {
             return Graphics.COLOR_WHITE;
         }
         return Graphics.COLOR_WHITE;
+    }
+
+    function _isFlashlightOn() as Boolean {
+        return _color != Graphics.COLOR_BLACK;
     }
 }

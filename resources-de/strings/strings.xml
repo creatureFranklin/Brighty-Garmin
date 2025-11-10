@@ -56,5 +56,8 @@
     <string id="autoOff60">60 s</string>
     <string
         id="autoOff120">120 s</string>
-
+    <string id="backlight">Beleuchtung</string>
+    <string id="allowBacklight">Beleuchtung zulassen</string>
+    <string
+        id="backlightKeepAlive">Max. Helligkeit halten</string>
 </strings>

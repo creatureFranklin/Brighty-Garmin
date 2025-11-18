@@ -15,12 +15,17 @@ class FlashingView extends WatchUi.View {
 
     var _autoOff as AutoOffController;
     var _timer as Timer.Timer;
+    var _deviceHeight as Number = 0;
+    var _deviceWidth as Number = 0;
 
     // Sequence: array of [isOn(Boolean), units(Number)]
     var _pattern as Array<Array>;
     var _stepIdx as Number = 0;
     var _remainingUnits as Number = 0;
     var _isOn as Boolean = false;
+
+    var _isViewVisible as Boolean = false;
+    var _backlightKA as BacklightKeepAlive?;
 
     // Flashing modes
     public const MODE_SOS as Symbol = :sos;
@@ -43,30 +48,52 @@ class FlashingView extends WatchUi.View {
     }
 
     function onShow() {
+        _isViewVisible = true;
+
         // Load current user-selected colors (same as in FlashlightView)
         _colors = prepareColors();
 
         // Start periodic ticking at the UNIT_MS interval
         _timer.start(method(:_tick), UNIT_MS, /*repeat=*/ true);
 
+        var last = _colors.size() - 1;
+        if (_index > last) {
+            _index = last;
+        }
+        if (_index < 0) {
+            _index = 0;
+        }
+
+        setActiveColor(_index);
+
         WatchUi.requestUpdate();
     }
 
     function onHide() {
+        _isViewVisible = false;
         if (_timer != null) {
             try {
                 _timer.stop();
             } catch (e) {}
         }
+
+        if (_backlightKA != null) {
+            _backlightKA.stop();
+        }
     }
 
     function onUpdate(dc as Graphics.Dc) {
+        _deviceHeight = dc.getHeight();
+        _deviceWidth = dc.getWidth();
+
+        // 1) Fill background
         var bg = _isOn ? _colors[_index] : Graphics.COLOR_BLACK;
         var fg = contrastColor(bg);
 
         dc.setColor(Graphics.COLOR_WHITE, bg);
         dc.clear();
 
+        // 2) Count geometry
         var w = dc.getWidth(),
             h = dc.getHeight();
         var cx = w / 2.0,
@@ -126,6 +153,22 @@ class FlashingView extends WatchUi.View {
             return true;
         }
 
+        return false;
+    }
+
+    function onTap(clickEvent as WatchUi.ClickEvent) {
+        var h = _deviceHeight > 0 ? _deviceHeight : 100;
+        var y = clickEvent.getCoordinates()[1];
+        if (y < h / 2) {
+            prevColor();
+        } else {
+            nextColor();
+        }
+
+        return true;
+    }
+
+    function onBack() as Boolean {
         return false;
     }
 
@@ -199,25 +242,58 @@ class FlashingView extends WatchUi.View {
         ];
     }
 
-    // --- Same color logic as in FlashlightView ---
-    function prepareColors() as Array<Number> {
-        var settingColors = SettingsService.getSelectedColors();
-        var whiteShades = [0xbfbfbf, 0x808080];
-        var result = [] as Array<Number>;
-
-        for (var i = 0; i < settingColors.size(); i += 1) {
-            var col = settingColors[i];
-            result.add(col);
-
-            if (col == Graphics.COLOR_WHITE) {
-                for (var j = 0; j < whiteShades.size(); j += 1) {
-                    result.add(whiteShades[j]);
-                }
-            }
+    function setActiveColor(colorIndex as Number) as Void {
+        _index = colorIndex;
+        _color = _colors[_index];
+        WatchUi.requestUpdate();
+        if (_autoOff != null) {
+            _autoOff.rearm(_color); // on black color stop timer
         }
 
-        result.add(Graphics.COLOR_BLACK);
-        return result;
+        if (_isFlashlightOn()) {
+            if (SettingsService.getAllowBacklight()) {
+                Utils.turnOnBacklight(1.0, 2); // priming shot
+            }
+            if (SettingsService.getAllowBacklight() && SettingsService.getBacklightKeepAlive()) {
+                if (_backlightKA == null) {
+                    _backlightKA = new BacklightKeepAlive();
+                }
+                _backlightKA.start();
+            } else if (_backlightKA != null) {
+                _backlightKA.stop();
+            }
+        } else {
+            if (_backlightKA != null) {
+                _backlightKA.stop();
+            }
+        }
+    }
+
+    public function resyncBacklightKA() as Void {
+        // If view is not active / not vissible (for example opened settings)
+        if (!_isViewVisible) {
+            return;
+        }
+        setActiveColor(_index);
+    }
+
+    function nextColor() {
+        var last = _colors.size() - 1;
+        if (_index < last) {
+            _index += 1;
+            setActiveColor(_index);
+        }
+    }
+
+    function prevColor() {
+        if (_index > 0) {
+            _index -= 1;
+            setActiveColor(_index);
+        }
+    }
+
+    function prepareColors() as Array<Number> {
+        return SettingsService.getSelectedColors();
     }
 
     function contrastColor(bg as Number) as Number {
@@ -239,27 +315,7 @@ class FlashingView extends WatchUi.View {
         return Graphics.COLOR_WHITE;
     }
 
-    function setActiveColor(colorIndex as Number) as Void {
-        _index = colorIndex;
-        _color = _colors[_index];
-        WatchUi.requestUpdate();
-        if (_autoOff != null) {
-            _autoOff.rearm(_color);
-        }
-    }
-
-    function nextColor() {
-        var last = _colors.size() - 1;
-        if (_index < last) {
-            _index += 1;
-            setActiveColor(_index);
-        }
-    }
-
-    function prevColor() {
-        if (_index > 0) {
-            _index -= 1;
-            setActiveColor(_index);
-        }
+    function _isFlashlightOn() as Boolean {
+        return _color != Graphics.COLOR_BLACK;
     }
 }
